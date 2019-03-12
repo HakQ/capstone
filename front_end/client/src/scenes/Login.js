@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 
 class Signin extends Component {
-
   constructor(props) {
     super(props);
   }
@@ -29,4 +28,5 @@ class Signin extends Component {
     );
   }
 }
+
 export default Signin;
