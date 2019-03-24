@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import logo from "./../static/logo.svg";
 import styled from "styled-components";
 import ButtonContainer from "./parts/Button.js";
+import Account from "./Account/Account.js";
 
 class Navbar extends Component {
   constructor(props) {
@@ -12,9 +13,6 @@ class Navbar extends Component {
   render() {
     return (
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
-        {/* https://www.iconfinder.com/icons/1243689/call_phone_icon
-        Creative Commons (Attribution 3.0 Unported);
-        https://www.iconfinder.com/Makoto_msk */}
         <Link to="/">
           <img src={logo} alt="Store Logo" className="mr-auto"/>
         </Link>
@@ -36,17 +34,8 @@ class Navbar extends Component {
             </Link>
           </li>
           <li className="nav-item ml-5">
-            <div className="dropdown">
-              <Link to="profile" className="dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Account
-              </Link>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <Link to="profile" className="dropdown-item" href="#">Profile</Link>
-                <Link to="signup" className="dropdown-item" href="#">Signup</Link>
-                <Link to="login" className="dropdown-item" href="#">Login</Link>
-                <Link to="mysell" className="dropdown-item" href="#">My Sell</Link>
-                <Link to="myorder" className="dropdown-item" href="#">My Order</Link>
-              </div>
+            <div className="nav-link">
+              <Account/>
             </div>
           </li>
           <li className="nav-item ml-5">
@@ -75,16 +64,19 @@ class Navbar extends Component {
 
 const NavWrapper = styled.nav
 `
-  background: var(--mainBlue);
+  transition: 2s ease-in-out all;
+  background: #232F3E;
   .nav-link{
     color:var(--mainWhite) !important;
     font-size: 1.3rem;
     text-transform: capitalize;
+    &:hover{
+      transform: scale(1.1);
+    }
   }
+
 `
 
 
 
 export default Navbar;
-
-

@@ -23,6 +23,10 @@ import Login from "./components/Account/Login.js"
 import Signup from "./components/Account/Signup.js"
 import Sell from "./components/Sell/Sell.js";
 import Cart from "./components/Cart/Cart.js";
+import Detail from "./components/Browse/Detail.js";
+
+import {UserProvider} from "./UserContext.js";
+import {ProductProvider} from "./ProductContext.js";
 
 //Sets up the routes for the project
 class App extends Component {
@@ -32,25 +36,30 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <Navbar/>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/browse" component={Browse}/>
-            <Route path="/about" component={About}/>
-            <Route path="/guide" component={Guide}/>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/mysell" component={MySell} />
-            <Route path="/myorder" component={MyOrder} />
-            <Route path="/sell" component={Sell}/>
-            <Route path="/cart" component={Cart}/>
-            <Route component={Default} />
-          </Switch>
-        </React.Fragment>
-      </Router>
+      <UserProvider>
+        <ProductProvider>
+          <Router>
+            <React.Fragment>
+              <Navbar/>
+              <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/browse" component={Browse}/>
+                <Route path="/about" component={About}/>
+                <Route path="/guide" component={Guide}/>
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/mysell" component={MySell} />
+                <Route path="/myorder" component={MyOrder} />
+                <Route path="/sell" component={Sell}/>
+                <Route path="/cart" component={Cart}/>
+                <Route path="/detail" component={Detail}/>
+                <Route component={Default} />
+              </Switch>
+            </React.Fragment>
+          </Router>
+        </ProductProvider>
+      </UserProvider>
     );
   }
 }

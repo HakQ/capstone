@@ -1,48 +1,94 @@
 import React, { Component } from 'react';
+import {UserConsumer} from "../../UserContext.js";
+import { Redirect } from 'react-router-dom';
+import {Link} from "react-router-dom";
 
-class Login extends Component {
-
+class Signup extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: "",
+      username:"",
+      firstname:"",
+      lastname:""
+    }
   }
 
-  render(){ 
-    return (
-      <div className="container">
-        <div className="row justify-content-center p-5" >
-          <div className="col-12 col-lg-6">
-            <form>
-              <div className="form-group">
-                <label htmlFor="exampleInputFirstName">First Name</label>
-                <input type="first_name" className="form-control" id="exampleInputFirstName" aria-describedby="emailHelp" placeholder="First" onChange = {this.props.onFirstChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputLastName">Last Name</label>
-                <input type="last_name" className="form-control" id="exampleInputLastName" placeholder="Last" onChange = {this.props.onLastChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputUsername">Username</label>
-                <input type="username" className="form-control" id="exampleInputUsername" placeholder="Username" onChange = {this.props.onUsernameChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputEmail">Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail" placeholder="example@example.com" onChange = {this.props.onEmailChange} />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputPassword">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword" placeholder="******" onChange = {this.props.onPasswordChange} />
-              </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+  change_email = (event)=>{
+    this.setState({email: event.target.value})
+  }
 
-          </div>
+  change_pw = (event)=>{
+    this.setState({password: event.target.value});
+  }
+  change_username = (event)=>{
+    this.setState({username: event.target.value});
+  }
+  change_first=(event)=>{
+    this.setState({firstname: event.target.value});
+  }
+  change_last=(event)=>{
+    this.setState({lastname: event.target.value});
+  }
 
-        </div>
-
-      </div>
-    );
+  render(){
+    return(
+      <UserConsumer>{(value)=>{
+        if(value.logged){
+          return <Redirect to='/'/>
+        }
+        else{
+          return(
+            <React.Fragment>
+              <div className="container">
+                <div className="row justify-content-center p-5" >
+                  <div className="col-12 col-lg-6">
+                    <form onSubmit={()=>{value.handleSignup(this.state)}}>
+                      <div className="form-group">
+                        <label htmlFor="InputFirstName">First Name</label>
+                        <input type="first_name" className="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="First" onChange = {this.change_first} />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="InputLastName">Last Name</label>
+                        <input type="last_name" className="form-control" id="InputLastName" placeholder="Last" onChange = {this.change_last} />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="InputUsername">Username</label>
+                        <input type="username" className="form-control" id="InputUsername" placeholder="Username" onChange = {this.change_username} />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="InputEmail">Email</label>
+                        <input type="email" className="form-control" id="InputEmail" placeholder="example@mail.com" onChange = {this.change_email} />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="InputPassword">Password</label>
+                        <input type="password" className="form-control" id="InputPassword" placeholder="******" onChange = {this.change_pw} />
+                      </div>
+                      <div className="text-center">
+                        <button type="submit" className="btn btn-primary amazon-yellow">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-12 col-lg-6 mx-auto">
+                    <p className="text-center">Already have an account?</p>
+                    <div className="text-center">
+                      <Link to="/login">
+                        <button type="button" className="btn btn-secondary">Login Here</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+        )}
+      }}</UserConsumer>
+    )
   }
 }
 
 
-export default Login;
+
+export default Signup;
