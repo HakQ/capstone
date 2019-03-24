@@ -18,6 +18,7 @@ class ProductList extends React.Component {
               <div className="row">
                 <ProductConsumer>
                   {value=>{
+                    console.log(value);
                     return value.product.map(product=>{
                       return <Product key={product.id} product={product}/>;
                     });

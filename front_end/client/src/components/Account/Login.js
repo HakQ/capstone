@@ -33,14 +33,17 @@ class Login extends Component {
             <div className="container">
               <div className="row justify-content-center p-5" >
                 <div className="col-12 col-lg-6">
-                  <form onSubmit={()=>{value.handleLogin(this.state.email, this.state.password)}}>
+                  <form onSubmit={(event)=>{
+                    event.preventDefault();
+                    value.handleLogin(this.state.email, this.state.password, this.state.confirm_password);
+                  }}>
                     <div className="form-group">
                       <label htmlFor="InputEmail">Email address</label>
                       <input type="email" className="form-control" id="InputEmail" placeholder="Enter email" onChange={this.change_email} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="InputPassword">Password</label>
-                      <input type="password" className="form-control" id="InputPassword" placeholder="Password" onChange={this.change_pw}/>
+                      <label htmlFor="InputConfirmPassword">Password</label>
+                      <input type="password" className="form-control" id="InputConfirmPassword" placeholder="Password" onChange={this.change_pw}/>
                     </div>
                     <div className="text-center">
                       <button type="submit" className="btn btn-primary amazon-yellow" >Submit</button>
@@ -58,9 +61,11 @@ class Login extends Component {
                     </div>
                   </div>
               </div>
+              <p className="error_Message text-center text-danger">{value.error_message}</p>
             </div>
         )}
       }}</UserConsumer>
+
     )
   }
 }

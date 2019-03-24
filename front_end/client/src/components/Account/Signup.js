@@ -9,6 +9,7 @@ class Signup extends Component {
     this.state = {
       email: "",
       password: "",
+      confirm_password:"",
       username:"",
       firstname:"",
       lastname:""
@@ -18,9 +19,11 @@ class Signup extends Component {
   change_email = (event)=>{
     this.setState({email: event.target.value})
   }
-
   change_pw = (event)=>{
     this.setState({password: event.target.value});
+  }
+  change_pw_confirm = (event)=>{
+    this.setState({confirm_password: event.target.value});
   }
   change_username = (event)=>{
     this.setState({username: event.target.value});
@@ -44,7 +47,9 @@ class Signup extends Component {
               <div className="container">
                 <div className="row justify-content-center p-5" >
                   <div className="col-12 col-lg-6">
-                    <form onSubmit={()=>{value.handleSignup(this.state)}}>
+                    <form onSubmit={(event)=>{
+                      event.preventDefault();
+                      value.handleSignup(this.state)}}>
                       <div className="form-group">
                         <label htmlFor="InputFirstName">First Name</label>
                         <input type="first_name" className="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="First" onChange = {this.change_first} />
@@ -65,20 +70,21 @@ class Signup extends Component {
                         <label htmlFor="InputPassword">Password</label>
                         <input type="password" className="form-control" id="InputPassword" placeholder="******" onChange = {this.change_pw} />
                       </div>
+                      <div className="form-group">
+                        <label htmlFor="InputPassword_confirm">Confirm Password</label>
+                        <input type="password" className="form-control" id="InputPassword_confirm" placeholder="******" onChange={this.change_pw_confirm}/>
+                      </div>
                       <div className="text-center">
                         <button type="submit" className="btn btn-primary amazon-yellow">Submit</button>
                       </div>
                     </form>
-                  </div>
-                </div>
-                <div className="row justify-content-center">
-                  <div className="col-12 col-lg-6 mx-auto">
                     <p className="text-center">Already have an account?</p>
                     <div className="text-center">
                       <Link to="/login">
                         <button type="button" className="btn btn-secondary">Login Here</button>
                       </Link>
                     </div>
+                    <p className="error_Message text-center text-danger">{value.error_message}</p>
                   </div>
                 </div>
               </div>
@@ -92,3 +98,5 @@ class Signup extends Component {
 
 
 export default Signup;
+
+  

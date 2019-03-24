@@ -15,7 +15,7 @@ class Product extends React.Component {
     return (
       <ProductConsumer>{(value)=>{return(
         <ProductWrapper className="col-sm-9 col-md-6 col-lg-3 my-2 mx-auto">
-          <div class="card">
+          <div className="card">
             <div className="card-header mt-1 mx-auto">
               <h4><strong>{title}</strong></h4>
             </div>
@@ -83,8 +83,8 @@ const ProductWrapper = styled.div
   }
 
   img {
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
   }
   
   .btn-addcart{
