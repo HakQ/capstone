@@ -1,0 +1,23 @@
+{
+  "name": "mern-setup",
+  "version": "1.0.0",
+  "description": "Test the ability of Mern",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "FrancisXIrizarry",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongodb": "^2.2.16",
+    "paypal-rest-sdk": "^1.8.1",
+    "request": "^2.88.0"	
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
