@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {UserConsumer} from "../../UserContext.js";
 import { Redirect } from 'react-router-dom';
 import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 class Signup extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class Signup extends Component {
         else{
           return(
             <React.Fragment>
-              <div className="container">
+              <SignupWrapper className="container">
                 <div className="row justify-content-center p-5" >
                   <div className="col-12 col-lg-6">
                     <form onSubmit={(event)=>{
@@ -87,7 +88,7 @@ class Signup extends Component {
                     <p className="error_Message text-center text-danger">{value.error_message}</p>
                   </div>
                 </div>
-              </div>
+              </SignupWrapper>
             </React.Fragment>
         )}
       }}</UserConsumer>
@@ -95,6 +96,14 @@ class Signup extends Component {
   }
 }
 
+
+const SignupWrapper = styled.div
+`
+  .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+  }
+`
 
 
 export default Signup;

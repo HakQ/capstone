@@ -4,6 +4,22 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 class Detail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      add_cart_display:"block",
+      mess_display: "none"
+    }
+  }
+
+  changeDisplay(){
+    this.setState({
+      add_cart_display: "none",
+      mess_display: "block"
+    })
+  }
+
+
   render() {
     return (
       <ProductConsumer>{value=>{
@@ -25,10 +41,14 @@ class Detail extends React.Component {
                   <p>
                     <span className="font-weight-bold">Time Remaining:   </span>
                     <span>{time} minutes left</span> 
-                  </p>
-                  <button className="btn btn-primary rounded-pill addCart">
+                  </p> 
+                  <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
+                  <button className="btn btn-primary rounded-pill addCart pt-0 mt-0" style={{display:this.state.add_cart_display}} onClick={()=>{
+                    this.changeDisplay();
+                    value.addToCart(id);
+                  }}>
                     <i className="fas fa-cart-plus"/>
-                    <span>Add to Cart</span>
+                    <span>Claim To Cart</span>
                   </button>
                 </div>
               </div>
@@ -62,11 +82,10 @@ const DetailWrapper = styled.div
   .addCart{
     border: 0;
   }
-
-  .btn{
-    outline:none;
+  .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
   }
-
 `
 
 

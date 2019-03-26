@@ -8,7 +8,8 @@ class ProductProvider extends React.Component {
     super(props);
     this.state = {
       product:{},
-      viewProduct:{}
+      viewProduct:{},
+      cartProduct:[]
     }
   }
 
@@ -29,6 +30,21 @@ class ProductProvider extends React.Component {
     })
   }
 
+  addToCart=(id)=>{
+    const addCartProduct = this.state.product.find(item=>item.id===id);
+    const newProduct = this.state.product.filter((item) =>{ 
+      return item.id !== addCartProduct.id;  
+    });
+    let currentCart = this.state.cartProduct;
+    currentCart.push(addCartProduct)
+
+    this.setState({
+      cartProduct: currentCart,
+      product: newProduct
+    })
+
+  }
+
   render() {
     return (
       <ProductContext.Provider 
@@ -37,7 +53,9 @@ class ProductProvider extends React.Component {
             message:"Message from product context",
             product: this.state.product,
             viewProduct:this.state.viewProduct,
-            setView: this.setView
+            setView: this.setView,
+            addToCart: this.addToCart,
+            cartProduct:this.state.cartProduct
           }
         }
       >

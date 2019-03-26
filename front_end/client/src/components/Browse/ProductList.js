@@ -12,19 +12,18 @@ class ProductList extends React.Component {
       <React.Fragment>
         <div className="py-5">
           <div className="container">
-            <h1 className="text-center">Our Product</h1>
+            <h1 className="text-center">Today's Deal</h1>
             <br/>
             <div className="row">
-              <div className="row">
                 <ProductConsumer>
                   {value=>{
-                    console.log(value);
                     return value.product.map(product=>{
-                      return <Product key={product.id} product={product}/>;
+                      if(!product.inCart){
+                        return <Product key={product.id} product={product}/>;
+                      }
                     });
                   }}
                 </ProductConsumer>
-              </div>
             </div>
           </div>
         </div>

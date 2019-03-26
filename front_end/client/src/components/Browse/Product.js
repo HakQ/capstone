@@ -6,6 +6,17 @@ import {ProductConsumer} from "../../ProductContext.js";
 class Product extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      add_cart_display:"block",
+      mess_display: "none"
+    }
+  }
+
+  changeDisplay=()=>{
+    this.setState({
+      add_cart_display: "none",
+      mess_display: "block"
+    })
   }
 
   render() {
@@ -24,7 +35,7 @@ class Product extends React.Component {
                 <img src={img} className="card-img-top mx-auto d-block" alt="image of product"/>
               </Link>
             </div>
-            <div className="card-footer show-price">
+            <div className="card-footer show-price no-margin">
               <h5 className="card-title ml-3">${price} </h5>
               <h6 className="card-subtitle ml-3 smaller-text">
                 <span> Retail Price:</span><span className="cross-out">${retail}    </span> 
@@ -32,7 +43,11 @@ class Product extends React.Component {
               </h6>
             </div>
             <div className="card-footer justify-content-center">
-              <button className="w-60 btn-addcart mx-auto d-block">Add To Cart</button>
+              <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
+              <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={this.changeDisplay}>
+                Claim to Cart
+              </button>
+              {console.log(this.state)}
             </div>
           </div>
         </ProductWrapper>
@@ -111,13 +126,11 @@ const ProductWrapper = styled.div
 
     
   .smaller-text{
-    font-size:  0.9rem;
+    font-size:  0.8rem;
   }
 
   .cross-out{
     text-decoration: line-through;
   }
-
-    
   
 `

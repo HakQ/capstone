@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import {UserConsumer} from "../../UserContext.js";
 import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 class Login extends Component {
   
@@ -30,7 +31,7 @@ class Login extends Component {
         }
         else{
           return (
-            <div className="container">
+            <LoginWrapper className="container">
               <div className="row justify-content-center p-5" >
                 <div className="col-12 col-lg-6">
                   <form onSubmit={(event)=>{
@@ -62,12 +63,20 @@ class Login extends Component {
                   </div>
               </div>
               <p className="error_Message text-center text-danger">{value.error_message}</p>
-            </div>
+            </LoginWrapper>
         )}
       }}</UserConsumer>
 
     )
   }
 }
+
+const LoginWrapper = styled.div
+`
+  .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+  }
+`
 
 export default Login;
