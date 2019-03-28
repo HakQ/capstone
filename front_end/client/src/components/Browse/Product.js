@@ -2,13 +2,14 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {ProductConsumer} from "../../ProductContext.js";
+import Timer from "./Timer.js";
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
     this.state={
       add_cart_display:"block",
-      mess_display: "none"
+      mess_display: "none",
     }
   }
 
@@ -19,9 +20,40 @@ class Product extends React.Component {
     })
   }
 
+
+
   render() {
     const {id,title,img,price, discount, retail, inCart, time} = this.props.product;
-    let discount_percent = Math.ceil(100*discount); 
+    let discount_percent = Math.ceil(100*discount);
+
+    const {endDate} = this.props.product;
+
+    /**********playground mode******/
+
+    // let now = new Date();
+    // console.log("time: ", endDate);
+    // endDate.setSeconds( endDate.getSeconds() + 1 );
+    // console.log("second added: ", endDate);
+
+
+
+
+    // let now = new Date().getTime();
+    // let t = endDate - now;
+    // if (t >= 0) {
+    //   let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    //   let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    //   let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    //   let secs = Math.floor((t % (1000 * 60)) / 1000);
+
+    // }
+    // else{
+    //   console.log("time expired");
+    // }
+
+
+
+    /*************************/ 
 
     return (
       <ProductConsumer>{(value)=>{return(
@@ -35,19 +67,21 @@ class Product extends React.Component {
                 <img src={img} className="card-img-top mx-auto d-block" alt="image of product"/>
               </Link>
             </div>
-            <div className="card-footer show-price no-margin">
+            <div className="card-footer show-price mx-auto">
               <h5 className="card-title ml-3">${price} </h5>
               <h6 className="card-subtitle ml-3 smaller-text">
                 <span> Retail Price:</span><span className="cross-out">${retail}    </span> 
                 <span className="badge badge-danger">you saved{discount_percent}% </span>
               </h6>
             </div>
+            <div className="timer mx-auto">
+              <Timer expire={endDate} id={id}/>
+            </div>
             <div className="card-footer justify-content-center">
               <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
               <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={this.changeDisplay}>
                 Claim to Cart
               </button>
-              {console.log(this.state)}
             </div>
           </div>
         </ProductWrapper>
@@ -131,6 +165,13 @@ const ProductWrapper = styled.div
 
   .cross-out{
     text-decoration: line-through;
+  }
+
+  .timer{
+    font-size: 0.8rem;
+    color: gray;
+    margin: -0.3rem;
+    padding: -0.3rem;
   }
   
 `

@@ -1,7 +1,20 @@
 import React, {Component} from 'react';
 import {storeProducts} from "./static/data.js";
-const ProductContext = React.createContext();
+import axios from "axios";
 
+/*import qs from 'qs';
+const data = { 'bar': 123 };
+const options = {
+  method: 'POST',
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  data: qs.stringify(data),
+  url,
+  params: {ID: 12345},
+};
+axios(options);*/
+
+
+const ProductContext = React.createContext();
 //create the provider class
 class ProductProvider extends React.Component {
   constructor(props) {
@@ -20,9 +33,32 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
+    // let upc = "888411924708"; //nike runningg shoes
+    // let location = "https://api.upcitemdb.com/prod/trial/lookup?upc="; //location
+
+    // axios({
+    //   method: 'get', 
+    //   url: 'http://localhost:8000/test',
+    //   data: {},
+    //   proxy: {
+    //     host: '127...',
+    //     port: 8000
+    //   },
+    //   headers: { 
+    //     // "Content-Type": "application/json",
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
+    // })
+    // .then(function (response) {
+    //   console.log("then :" + response);
+    // })
+    // .catch(function (error) {
+    //   console.log("Error : " +error);
+    // }); 
 
   }
 
+  //functions for children to interact with the context api
   setView=(id)=>{
     const tempProduct = this.state.product.find(item=>item.id===id);
     this.setState({
@@ -45,6 +81,16 @@ class ProductProvider extends React.Component {
 
   }
 
+  expireHandler=(id)=>{
+    const newProduct = this.state.product.filter((item) =>{ 
+      return item.id !== id;  
+    });
+
+    this.setState({
+      product: newProduct
+    })
+  }
+
   render() {
     return (
       <ProductContext.Provider 
@@ -55,7 +101,8 @@ class ProductProvider extends React.Component {
             viewProduct:this.state.viewProduct,
             setView: this.setView,
             addToCart: this.addToCart,
-            cartProduct:this.state.cartProduct
+            cartProduct:this.state.cartProduct,
+            expireHandler: this.expireHandler
           }
         }
       >

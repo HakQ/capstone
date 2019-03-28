@@ -17,7 +17,9 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 5
+    time: 5,
+    endDate: new Date('March 27, 2019 20:36:00')
+
   },
   {
     id: 2,
@@ -32,7 +34,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 8
+    time: 8,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 3,
@@ -47,7 +50,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time:1
+    time:1,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 4,
@@ -62,7 +66,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 10
+    time: 10,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 5,
@@ -77,7 +82,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 30
+    time: 30,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 6,
@@ -92,7 +98,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 2
+    time: 2,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 7,
@@ -107,7 +114,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 3
+    time: 3,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 8,
@@ -122,7 +130,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 14
+    time: 14,
+    endDate: new Date('March 27, 2019 21:00:00')
   },
   {
     id: 9,
@@ -137,7 +146,8 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
-    time: 16
+    time: 16,
+    endDate: new Date('March 27, 2019 21:00:00')
   }
 ];
 
