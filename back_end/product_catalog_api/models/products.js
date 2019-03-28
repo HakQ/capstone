@@ -7,13 +7,14 @@ const ProductSchema = new mongoose.Schema({
   Seller_id:{ type:String , required:true},
   Title:{type:String,required: true},
   Price:{type:Number,required: true},
-  Retail:{type:Number,required: true},
+  Competitor:{type:Number,required: true},
   Discount:{type:Number, required: true},
   Quantity:{type:Number,required:true},
   Size:{type:String , required:true , default:'OS'},
   Description:{type:String, default:'No Description Available'},
   expireAt: { type: Date , required:true },
   Color:{type:String , required:true},
+  Img:[{type : String}],
   SoldOut:{type:Boolean , default:false}
 });
 

@@ -4,14 +4,14 @@ const moment = require('moment-timezone');
 
 function validify(number)
 {
-  console.log('enters valid');
+  //console.log('enters valid');
   if(typeof(number)!='number' || number<0 ||  number>10000)
   {
-    console.log('validify');
+  //  console.log('validify');
     return false;
   }
 
-  console.log('was valid');
+  //console.log('was valid');
   return true;
 };
 
@@ -41,19 +41,18 @@ function total_price(seller_paid)
 
 
 
-//checks if its a good deal if it is less than retail and lower than our competitors by atleast 15%
-function good_deal(seller_paid,competitors_price,retail)
+//checks if its a good deal if it is lower than our competitors by atleast 15%
+function good_deal(seller_paid,competitors_price)
 {
   try{
     seller_paid= Number(seller_paid);
     competitors_price=Number(competitors_price);
-    retail=Number(retail);
   }catch(err){
       throw err;
   }
-  if(!validify(seller_paid)|| !validify(competitors_price) || !validify(retail))
+  if(!validify(seller_paid)|| !validify(competitors_price))
   {
-    console.log('deal');
+    //console.log('deal');
     throw 'Not a number';
   }
 
@@ -62,12 +61,8 @@ function good_deal(seller_paid,competitors_price,retail)
     var total=total_price(seller_paid);
     if(competitors_price!=0 && total>(competitors_price-(competitors_price*.15)))
     {
-        console.log(competitors_price);
+        //console.log(competitors_price);
         return false;
-    }
-
-    else if (total>retail) {
-      return false;
     }
 
     else {
@@ -88,7 +83,7 @@ function quantity_check(qty)
   }
   if(!validify(qty))
   {
-    console.log('qty');
+    //console.log('qty');
     throw 'Not a number';
   }
 
@@ -117,7 +112,7 @@ function sufficient_time(minutes)
   }
   if(!validify(minutes))
   {
-    console.log('time');
+    //console.log('time');
     throw 'Not a number';
   }
 
@@ -134,22 +129,22 @@ function sufficient_time(minutes)
 
 
 
-function Discount(price_paid,retail)
+function Discount(price_paid,competitor)
 {
-
+  //console.log(competitor);
   try{
     price_paid=Number(price_paid);
-    retail=Number(retail);
+    competitor=Number(competitor);
   }catch(err){
     throw err;
   }
-  if(!validify(retail) || !validify(price_paid))
+  if(!validify(competitor) || !validify(price_paid))
   {
-    console.log('discount')
+    //console.log('discount')
     throw 'Not a number';
   }
 
-  return (price_paid/retail);
+  return (price_paid/competitor);
 };
 
 
@@ -175,12 +170,13 @@ server.post('/upload',async (req,res,next)=>{
       return next(new errors.InvalidContentError("NOT JSON"))
     }
 
-    const {upc,seller,title,price_paid,competitors,retail,qty,size,time,description,color}=req.body;
-    console.log(seller,title,price_paid,competitors,retail,qty,size,time,description,color);
-
+    const {title,description,upc,brand,color,size,img,weight,competitor,seller,time,price_paid,qty}=req.body;
+    //const {upc,seller,title,price_paid,competitors,retail,qty,size,time,description,color}=req.body;
+    //console.log(seller,title,price_paid,competitors,qty,size,time,description,color);
+    console.log(title,description,upc,brand,color,size,img,weight,competitor,seller,time,price_paid,qty);
     //if it is a good deal and the time is within bounds then commit to db
     try{
-      if(!good_deal(price_paid,competitors,retail))
+      if(!good_deal(price_paid,competitor))
       {
         res.send({"msg":"Sorry , not a good deal"});
       }
@@ -194,7 +190,7 @@ server.post('/upload',async (req,res,next)=>{
         return next(new errors.InvalidContentError('Quantity surpasses our 10 unit limit'));
       }
       total=total_price(price_paid);
-      discount= Discount(total,retail);
+      discount= Discount(total,competitor);
     }catch(err){
       return next(new errors.InvalidContentError(err));
     }
@@ -215,13 +211,14 @@ server.post('/upload',async (req,res,next)=>{
       item.Seller_id=seller;
       item.Title=title;
       item.Price=total;
-      item.Retail=retail;
+      item.Competitor=competitor;
       item.Discount=discount;
       item.Quantity=qty;
       item.Size=size;
       item.Description=description;
       item.Color=color;
-      console.log('item created');
+      item.Brand= brand;
+      item.Img=img;
 
       const duplicate = await Product.find({Seller_id:seller,UPC:upc});
 
@@ -234,9 +231,10 @@ server.post('/upload',async (req,res,next)=>{
       //console.log(moment.tz("America/New_York"))
       var date=moment().tz("America/New_York").add(t,'minutes');
       //console.log(date);
-      item.expireAt=date._d;
+      item.expireAt=date;
       //console.log(date._d);
       const newItem = await item.save();
+      console.log('item created');
       res.send(201);
       next();
     } catch(err){
