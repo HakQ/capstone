@@ -1,11 +1,17 @@
-const restify = require('restify');
+const express  = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require ('mongoose');
 const config = require('./config');
+const hostname = '127.0.0.1';//Run IP
+const http = require('https');//Protocol (Should be https)
+var url = require('url'); //Get Urls
+const port = 3002;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-const server = restify.createServer();
 
-//Middle ware
-server.use(restify.plugins.bodyParser());
 
-server.listen(config.PORT, ()=>{});
-require('./routes/get_info')(server);
+app.listen(port, hostname, () => {});
+require('./routes/get_info')(app);
 console.log('Server started on port',config.PORT)
