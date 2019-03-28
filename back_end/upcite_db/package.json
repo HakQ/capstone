@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "restify": "^8.2.0",
     "restify-errors": "^7.0.0"
   }
