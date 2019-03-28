@@ -27,23 +27,24 @@ class ProductProvider extends React.Component {
   }
 
   componentWillMount(){
-    axios.get("http://localhost:3002/get_info",
-    {
-      params:{
-        upc:"888411924708"
-      },
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>{
-        let info = res;
-        this.setState({product: info});
-        console.log(res);
-    })
-    .catch(err=>{
-        console.log(err);
-    })
+    this.setState({product:storeProducts})
+    // axios.get("http://localhost:3002/get_info",
+    // {
+    //   params:{
+    //     upc:"888411924708"
+    //   },
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(res=>{
+    //     let info = res;
+    //     this.setState({product: info});
+    //     console.log(res);
+    // })
+    // .catch(err=>{
+    //     console.log(err);
+    // })
   }
 
   componentDidMount() {
