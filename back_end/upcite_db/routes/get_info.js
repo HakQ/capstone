@@ -1,17 +1,55 @@
-const errors = require('restify-errors');
-const https = require('https')
+const https = require('https');
+const express = require('express');
+const request = require("request");
+
+const router = express.Router();
 
 
+router.get('/info', (req, res) => { 
+  res.json({msg:"hello"});
+});
 
-module.exports = server => {
-  server.get('/test',(req,res,next) =>{
-    res.contentType = 'json';
-    res.send({hello: 'world'});
-})}
+router.post('/info', (req, res) => {
+  res.json({msg:"bad bad bad"});
+});
+
+router.get("/get_info", (req,res)=>{
+  // res.json({msg: "eh we got info"});
+
+  let param = req.query.upc;
+  console.log(param);
+  res.json({par: param})
 
 
+  /***Code from upcitedb***/
+  // const https = require('https');
+  // var opts = {
+  //   hostname: 'api.upcitemdb.com',
+  //   path: '/prod/trial/lookup',
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   }
+  // }
+  // var req2 = https.request(opts, function(res2) {
+  //   console.log('statusCode: ', res.statusCode);
+  //   console.log('headers: ', res.headers);
+  //   res2.on('data', function(d) {
+  //     console.log('BODY: ' + d);
+  //   })
+  // })
+  // req2.on('error', function(e) {
+  //   console.log('problem with request: ' + e.message);
+  // })
+  // req2.write('{ "upc": "74002293401102" }')
+  // req2.end()
+  /******code from upcitedb***/
 
 
+});
+
+
+module.exports = router;
 
 
 
@@ -28,9 +66,10 @@ module.exports = server => {
 
 // server.get('/get',(req,re,next) =>
 // {
-//     if(!req.is('application/json')){
-//       return next(new errors.InvalidContentError("NOT JSON"));
-//     }
+//     // if(!req.is('application/json')){
+//     //   return next(new errors.InvalidContentError("NOT JSON"));
+//     // }
+//     console.log(req);
 
 //     const upc = req.body;
 

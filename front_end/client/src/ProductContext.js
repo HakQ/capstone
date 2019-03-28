@@ -33,6 +33,8 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
+
+    /***playground****/
     // let upc = "888411924708"; //nike runningg shoes
     // let location = "https://api.upcitemdb.com/prod/trial/lookup?upc="; //location
 
@@ -44,10 +46,7 @@ class ProductProvider extends React.Component {
     //     host: '127...',
     //     port: 8000
     //   },
-    //   headers: { 
-    //     // "Content-Type": "application/json",
-    //     'Access-Control-Allow-Origin': '*'
-    //   }
+
     // })
     // .then(function (response) {
     //   console.log("then :" + response);
@@ -55,9 +54,16 @@ class ProductProvider extends React.Component {
     // .catch(function (error) {
     //   console.log("Error : " +error);
     // }); 
-    axios.get("http://localhost:3002/test",{
+    /*********/
+    axios.get("http://localhost:3002/get_info",{
+      params: {
+        upc:"888411924708"
+      },
       data:{
         upc:"888411924708"
+      },
+      headers: { 
+        "Content-Type": "application/json"
       }
     })
     .then(res=>{
