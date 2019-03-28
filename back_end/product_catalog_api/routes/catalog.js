@@ -164,12 +164,14 @@ server.get('/get',async(req,res,next)=>
 })
 
 server.post('/upload',async (req,res,next)=>{
-
+    console.log(req);
+    console.log("Upload start");
     //check if the response we received was json
     if(!req.is('application/json')){
       return next(new errors.InvalidContentError("NOT JSON"))
     }
-
+    console.log(req.body);
+    console.log("\n\n\n");
     const {title,description,upc,brand,color,size,img,weight,competitor,seller,time,price_paid,qty}=req.body;
     //const {upc,seller,title,price_paid,competitors,retail,qty,size,time,description,color}=req.body;
     //console.log(seller,title,price_paid,competitors,qty,size,time,description,color);
@@ -179,6 +181,8 @@ server.post('/upload',async (req,res,next)=>{
       if(!good_deal(price_paid,competitor))
       {
         res.send({"msg":"Sorry , not a good deal"});
+        res.end();
+        return;
       }
     }catch(err){
       return next(new errors.InvalidContentError(err));
@@ -189,8 +193,6 @@ server.post('/upload',async (req,res,next)=>{
       {
         return next(new errors.InvalidContentError('Quantity surpasses our 10 unit limit'));
       }
-      total=total_price(price_paid);
-      discount= Discount(total,competitor);
     }catch(err){
       return next(new errors.InvalidContentError(err));
     }
@@ -205,7 +207,9 @@ server.post('/upload',async (req,res,next)=>{
     }
 
     try{
-
+        
+      total=total_price(price_paid);
+      discount= Discount(total,competitor);
       const item = new Product();
       item.UPC=upc;
       item.Seller_id=seller;

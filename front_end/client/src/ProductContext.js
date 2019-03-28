@@ -55,6 +55,17 @@ class ProductProvider extends React.Component {
     // .catch(function (error) {
     //   console.log("Error : " +error);
     // }); 
+    axios.get("http://localhost:3002/test",{
+      data:{
+        upc:"888411924708"
+      }
+    })
+    .then(res=>{
+      console.log(res);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
 
   }
 
