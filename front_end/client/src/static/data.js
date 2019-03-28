@@ -18,7 +18,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 5,
-    endDate: new Date('March 27, 2019 20:36:00')
+    endDate: new Date('March 28, 2019 20:36:00')
 
   },
   {
@@ -35,7 +35,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 8,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 18:36:00')
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time:1,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 16:00:00')
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 10,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 10:00:00')
   },
   {
     id: 5,
@@ -83,7 +83,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 30,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 17:00:00')
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 2,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 18:20:00')
   },
   {
     id: 7,
@@ -115,7 +115,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 3,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 18:30:00')
   },
   {
     id: 8,
@@ -131,7 +131,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 14,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 21:00:00')
   },
   {
     id: 9,
@@ -147,7 +147,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 16,
-    endDate: new Date('March 27, 2019 21:00:00')
+    endDate: new Date('March 28, 2019 21:00:00')
   }
 ];
 

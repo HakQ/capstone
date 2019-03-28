@@ -27,24 +27,37 @@ class ProductProvider extends React.Component {
   }
 
   componentWillMount(){
-    this.setState({
-      product: storeProducts
-    });
+    axios.get("http://localhost:3002/get_info",
+    {
+      params:{
+        upc:"888411924708"
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res=>{
+        let info = res;
+        this.setState({product: info});
+        console.log(res);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => {
-    axios.get("http://localhost:3001/(name)")
-    .then(res=>{
-      console.log(res);
-    })
-    .catch(err=>{
-      console.log(err);
-    })
-
-      tempDate.setSeconds(tempDate.getSeconds() + 1);
-      this.setState({time:tempDate});
-    }, 10000);
+    // this.interval = setInterval(() => {
+    //   axios.get("54.198.165.68:3003/products")
+    //   .then(res=>{
+    //     let info = res;
+    //     this.setState({product: info});
+    //     console.log(res);
+    //   })
+    //   .catch(err=>{
+    //     console.log(err);
+    //   })
+    // }, 10000);
 
   }
 
