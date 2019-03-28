@@ -33,39 +33,8 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
-
-    /***playground****/
-    // let upc = "888411924708"; //nike runningg shoes
-    // let location = "https://api.upcitemdb.com/prod/trial/lookup?upc="; //location
-
-    // axios({
-    //   method: 'get', 
-    //   url: 'http://localhost:8000/test',
-    //   data: {},
-    //   proxy: {
-    //     host: '127...',
-    //     port: 8000
-    //   },
-
-    // })
-    // .then(function (response) {
-    //   console.log("then :" + response);
-    // })
-    // .catch(function (error) {
-    //   console.log("Error : " +error);
-    // }); 
-    /*********/
-    axios.get("http://localhost:3002/get_info",{
-      params: {
-        upc:"888411924708"
-      },
-      data:{
-        upc:"888411924708"
-      },
-      headers: { 
-        "Content-Type": "application/json"
-      }
-    })
+    this.interval = setInterval(() => {
+    axios.get("http://localhost:3001/(name)")
     .then(res=>{
       console.log(res);
     })
@@ -73,6 +42,14 @@ class ProductProvider extends React.Component {
       console.log(err);
     })
 
+      tempDate.setSeconds(tempDate.getSeconds() + 1);
+      this.setState({time:tempDate});
+    }, 10000);
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   //functions for children to interact with the context api
@@ -133,3 +110,28 @@ class ProductProvider extends React.Component {
 const ProductConsumer = ProductContext.Consumer;
 
 export {ProductConsumer, ProductProvider};
+
+
+/*
+  
+    // let upc = "888411924708"; //nike runningg shoes
+    // let location = "https://api.upcitemdb.com/prod/trial/lookup?upc="; //location
+
+    // axios({
+    //   method: 'get', 
+    //   url: 'http://localhost:8000/test',
+    //   data: {},
+    //   proxy: {
+    //     host: '127...',
+    //     port: 8000
+    //   },
+
+    // })
+    // .then(function (response) {
+    //   console.log("then :" + response);
+    // })
+    // .catch(function (error) {
+    //   console.log("Error : " +error);
+    // }); 
+    
+*/
