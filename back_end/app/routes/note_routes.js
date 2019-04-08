@@ -48,14 +48,8 @@ app.get('/notes/:id/:KeyPass', (req, res) => {
 
 //Post the data into the database if the user does not already exist. (Encrypt User/Password), Ok User needs to be done, easily can be. 
 app.post('/notes', (req, res) => {
-    const note = { User: req.body.User, Pass: req.body.Password, KeyPass: "test" };
-	//const details = { '_id': new ObjectID(id) }; 
-	//const details = {'User' : new ObjectID(note.User) };
-	
-	console.log("USER" , req.body.User); //db.collection('notes').findOne({"User" : req.body.User}, (err, item) => {
-	
-
-	
+    const note = { User: req.body.User, Pass: req.body.Password };
+	console.log("USER" , req.body.User); 
 	db.collection('notes').findOne({"User" : note.User}, (err, item) => {
 	   console.log(item);
 	   if(!item){
@@ -66,7 +60,6 @@ app.post('/notes', (req, res) => {
 		    }
 		    else{
 			    note.Pass = hashed;
-			    const keyPass = req.body.KeyPass;
     		    db.collection('notes').insert(note, (err, result) => {
       			    if (err) { 
         		    	res.send({ 'error': 'An error has occurred' }); 
@@ -100,7 +93,7 @@ app.delete('/notes/:id', (req, res) => {
 app.put('/notes/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
-    const note = { User: req.body.User, Pass: req.body.Password, KeyPass: "test" };
+    const note = { User: req.body.User, Pass: req.body.Password };
 
 	var temp = cryptoObj.cryptPassword(req.body.Password, function(err, hashed){
 		if(err){
@@ -109,7 +102,6 @@ app.put('/notes/:id', (req, res) => {
 		}
 		else{
 			note.Pass = hashed;
-			const keyPass = req.body.KeyPass;
     		 db.collection('notes').update(details, note, (err, result) => {
       			if (err) { 
         			res.send({ 'error': 'An error has occurred' }); 

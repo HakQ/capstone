@@ -1,3 +1,5 @@
+var encryptTool = require("/home/tuxschool/Desktop/Link to Mern Setup/Utilities/paypalEncrypt.js");
+var fs  = require("fs");
 var authKey;
 var paypal = require('paypal-rest-sdk');
 var paypalAPI = require("/home/tuxschool/Mern Setup/Utilities/apiFunctions.js");
@@ -5,14 +7,42 @@ var paypalAPI = require("/home/tuxschool/Mern Setup/Utilities/apiFunctions.js");
 function typeOf(obj) {
   return {}.toString.call(obj).split(' ')[1].slice(0, -1).toLowerCase();
 }
-
-var paypal_client_id = 'AW3ZFvNBLp0K92uNCALK2NTBYeaPplZgFfZpsMoQaX-ftgiia2US3ZaXicpm064A2z1p5tJezt8fD7l6';
-var paypal_client_secret = 'EA8nIoVPZHQDYVq_BuoZBKetkmGimeqZo5HQsDO6n9OnZPe5d6n52ts-CSepROPhur7D2h_C69yQjj__';
-
+var paypalInfoArr = fs.readFileSync("/home/tuxschool/Desktop/Link to Mern Setup/config/paypal_config").toString().split('\n');
+console.log(paypalInfoArr);
+console.log("\n" + paypalInfoArr[0] + "\n");
+console.log(typeOf(paypalInfoArr[0]));
+var paypal_client_id = paypalInfoArr[0];  //'AW3ZFvNBLp0K92uNCALK2NTBYeaPplZgFfZpsMoQaX-ftgiia2US3ZaXicpm064A2z1p5tJezt8fD7l6';
+var paypal_client_secret = paypalInfoArr[1];  //'EA8nIoVPZHQDYVq_BuoZBKetkmGimeqZo5HQsDO6n9OnZPe5d6n52ts-CSepROPhur7D2h_C69yQjj__';
 paypal.configure({
   mode: 'sandbox', // Sandbox or live
   client_id: paypal_client_id,
   client_secret: paypal_client_secret});
+
+var stringSplitVar = { s1 : "", s2 : ""};
+
+async function splitString(str) {
+    str = str.toString();
+    var middle = Math.ceil(str.length / 2);
+    stringSplitVar.s1 = str.slice(0, middle);
+    stringSplitVar.s2 = str.slice(middle);
+    return new Promise(function(resolve,reject){
+        resolve(stringSplitVar);
+    });
+};
+
+async function getString(){
+    var stringVar = await splitString((paypal_client_secret));
+    console.log("Waited");
+    console.log(stringVar);
+}
+
+getString();
+var hw = encryptTool.encryptText("Some serious stuff");
+console.log(hw);
+console.log(encryptTool.decryptText(hw));
+
+
+
 
 function check_MAL_JSON(data){
     console.log(data.intent + "    " + typeOf(data.intent));
@@ -55,13 +85,15 @@ module.exports = function(app) {
                 //throw error;
                 res.write("Unable to process payment, check inputted data/try again\n\n");
                 res.write(JSON.stringify(payData, null, 4));
+                renewKey();
                 res.end();
             } else {
                 console.log("Create Payment Response:\n");
-                //console.log(payment);
+                console.log(payment);
+                console.log("\n");
                 var links = payment.links;
                 var redirect = links[1].href;
-                renewKey();
+            
                 res.send(redirect);
                 
             }
@@ -80,12 +112,14 @@ module.exports = function(app) {
                 //throw error;
                 res.write("Unable to process payment, check inputted data/try again\n\n");
                 res.write(JSON.stringify(payData, null, 4));
+                renewKey();
                 res.end();
             } else {
                 console.log("Create Payment Response:\n");
-                //console.log(payment);
+                console.log(payment);
+                console.log("\n");
                 //var links = payment.links;
-                renewKey();
+                
                 res.send(payment);
                 
             }
@@ -100,6 +134,7 @@ module.exports = function(app) {
        paypal.invoice.create(create_invoice_json, function (error, invoice) {
         if (error) {
             res.send(error);
+            renewKey();
             //throw error;
         } else {
             console.log("Create Invoice Response");

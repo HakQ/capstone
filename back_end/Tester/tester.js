@@ -17,7 +17,7 @@ var optionsGet = {
 };
 
 //Test Post 
-var myJSONObject = querystring.stringify({ User: 'tuxwonder7', Pass: 'kittyLover123', KeyPass: 'Random' });
+var myJSONObject = querystring.stringify({ User: 'tuxwonder7', Pass: 'kittyLover123' });
 var optionsPost = {
   host: '127.0.0.1',
   port: 8000,

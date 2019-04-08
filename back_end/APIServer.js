@@ -5,7 +5,7 @@ const http = require('http');
 const https = require('https');
 const app = express();
 const querystring = require('querystring'); 
-const port = 8000;
+const port = 8001;
 var url = require('url'); 
 var paypal = require('paypal-rest-sdk');
 var fs = require('fs');
@@ -20,8 +20,6 @@ function typeOf(obj) {
   return {}.toString.call(obj).split(' ')[1].slice(0, -1).toLowerCase();
 }
 
-
-
 //PayPal   Capstone ECommerce App Hunter CS
 //Account: francisxirizarryprogramming@gmail.com
 //AccessToken: access_token$production$pnwhyppds3s3zwt7$835b427175954ae21fcb58b65a9f674e
@@ -30,7 +28,6 @@ function typeOf(obj) {
 //Sandbox account: francisxirizarryprogramming-facilitator@gmail.com
 //Client ID: AW3ZFvNBLp0K92uNCALK2NTBYeaPplZgFfZpsMoQaX-ftgiia2US3ZaXicpm064A2z1p5tJezt8fD7l6
 //Secret: EA8nIoVPZHQDYVq_BuoZBKetkmGimeqZo5HQsDO6n9OnZPe5d6n52ts-CSepROPhur7D2h_C69yQjj__
-
 
 
 
@@ -80,117 +77,8 @@ app.listen(port, hostname, () => { //start server
 }); 
     
 
-/*
-function check_MAL_JSON(data){
-    console.log(data.intent + "    " + typeOf(data.intent));
-    console.log(data.intent == 'sale');
-    if(data.intent != "sale"){
-        return true;
-        // || data.intent != "order" || data.itent != "authorize"
-    }
-    //if(ddata.
-    return false;
-}
-
-
-
-var myCallback = async function(err, data) {
-  err = check_MAL_JSON(data);
-  if (err) throw err; // Check for the error and throw if it exists.
-  paypal.payment.create(data, function (error, payment) {
-    if (error) {
-        throw error;
-    } else {
-        console.log("Create Payment Response:\n");
-        console.log(payment);
-    }
-  });  
-  console.log('got data: '+ data); // Otherwise proceed as usual.JSON.stringify(data, null, 4) 
-};
 
     
-async function setPayment(requiredData, myCallBack){
-    var errState = (requiredData == null) ? null : false;
-    const promise = await myCallBack(errState, requiredData);
-    console.log("_After mycallback_ : " + requiredData);
-    //var paymentLink = ;
-    //console.log(
-}
-*/
-
-//Tester for API (PayPal)
-//setPayment(create_payment_json, myCallback);
-
-/*const server = http.createServer(function (req, res) {
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
-  console.log(filename);
-  filename = filename + ".html";
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }  
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});*/
-
-    
-
-/*
-curl -v -X POST https://api.sandbox.paypal.com/v2/payments/authorizations/0VF52814937998046/reauthorize \
--H "Content-Type: application/json" \
--H "Authorization: Bearer access_token$production$pnwhyppds3s3zwt7$835b427175954ae21fcb58b65a9f674e" \
--H "PayPal-Request-Id: 123e4567-e89b-12d3-a456-426655440040" \
--d '{
-  "amount": {
-    "value": "10.99",
-    "currency_code": "USD"
-  }
-}'
-
-*/
-
-
-/*
-
-var create_payment_json = {
-    "intent": "sale",
-    "payer": {
-        "payment_method": "paypal"
-    },
-    "redirect_urls": {
-        "return_url": "http://return.url",
-        "cancel_url": "http://cancel.url"
-    },
-    "transactions": [{
-        "item_list": {
-            "items": [{
-                "name": "item",
-                "sku": "item",
-                "price": "1.00",
-                "currency": "USD",
-                "quantity": 1
-            }]
-        },
-        "amount": {
-            "currency": "USD",
-            "total": "1.00"
-        },
-        "description": "This is the payment description."
-    }]
-};
-*/
-
-
-
-
 
 
 
