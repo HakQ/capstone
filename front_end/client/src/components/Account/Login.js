@@ -31,7 +31,12 @@ class Login extends Component {
         }
         else{
           return (
-            <LoginWrapper className="container">
+            <LoginWrapper className="container mt-5">
+              <div className="text-center">
+                <Link to="/">
+                  <img src="img/SnapLogo.jpg" className="logo" />
+                </Link>
+              </div>
               <div className="row justify-content-center p-5" >
                 <div className="col-12 col-lg-6">
                   <form onSubmit={(event)=>{
@@ -47,7 +52,7 @@ class Login extends Component {
                       <input type="password" className="form-control" id="InputConfirmPassword" placeholder="Password" onChange={this.change_pw}/>
                     </div>
                     <div className="text-center">
-                      <button type="submit" className="btn btn-primary amazon-yellow" >Submit</button>
+                      <button type="submit" className="btn btn-primary amazon-yellow" >Login</button>
                     </div>
                   </form>
                 </div>
@@ -76,6 +81,10 @@ const LoginWrapper = styled.div
   .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none;
+  }
+  .logo{
+    width:25rem;
+    height:10rem;
   }
 `
 

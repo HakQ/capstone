@@ -12,7 +12,8 @@ class UserProvider extends React.Component {
       password: "",
       userInfo:{},
       logged_in: false,
-      error_message:""
+      error_message:"",
+      hide_nav: false,
     }
   }
 
@@ -159,7 +160,8 @@ class UserProvider extends React.Component {
         logged_in: !this.state.logged_in,
         email: info.email,
         password: info.password,
-        userInfo: tempUserInfo
+        userInfo: tempUserInfo,
+        error_message:""
       })
     }
 

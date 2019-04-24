@@ -1,5 +1,7 @@
 import React from 'react';
 import ProductList from "./ProductList.js";
+import Navbar from "../Navbar.js";
+
 
 class Browse extends React.Component {
 
@@ -10,6 +12,7 @@ class Browse extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar/>
         <ProductList/>
       </React.Fragment>
     );

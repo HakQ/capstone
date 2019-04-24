@@ -40,7 +40,6 @@ class App extends Component {
         <ProductProvider>
           <Router>
             <React.Fragment>
-              <Navbar/>
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/browse" component={Browse}/>

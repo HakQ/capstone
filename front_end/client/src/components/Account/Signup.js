@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +46,12 @@ class Signup extends Component {
         else{
           return(
             <React.Fragment>
-              <SignupWrapper className="container">
+              <SignupWrapper className="container mt-5">
+                <div className="text-center">
+                  <Link to="/">
+                    <img src="img/SnapLogo.jpg" className="logo" />
+                  </Link>
+                </div>
                 <div className="row justify-content-center p-5" >
                   <div className="col-12 col-lg-6">
                     <form onSubmit={(event)=>{
@@ -76,7 +82,7 @@ class Signup extends Component {
                         <input type="password" className="form-control" id="InputPassword_confirm" placeholder="******" onChange={this.change_pw_confirm}/>
                       </div>
                       <div className="text-center">
-                        <button type="submit" className="btn btn-primary amazon-yellow">Submit</button>
+                        <button type="submit" className="btn btn-primary amazon-yellow">Sign Up</button>
                       </div>
                     </form>
                     <p className="text-center">Already have an account?</p>
@@ -102,6 +108,10 @@ const SignupWrapper = styled.div
   .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none;
+  }
+  .logo{
+    width:25rem;
+    height:10rem;
   }
 `
 

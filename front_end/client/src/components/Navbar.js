@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import logo from "./../static/logo.svg";
+import logo from "./../static/SnapLogo.jpg";
 import styled from "styled-components";
 import Account from "./Account/Account.js";
 
@@ -13,7 +13,7 @@ class Navbar extends Component {
     return (
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
         <Link to="/">
-          <img src={logo} alt="Store Logo" className="mr-auto"/>
+          <img src={logo} alt="Store Logo" className="mr-auto logo"/>
         </Link>
 
         <ul className="navbar-nav align-items-center">
@@ -37,11 +37,11 @@ class Navbar extends Component {
               <Account/>
             </div>
           </li>
-          <li className="nav-item ml-5">
+          {/*<li className="nav-item ml-5">
             <Link to="/Sell" className="nav-link">
               Sell
             </Link>
-          </li>
+          </li>*/}
         </ul>
 
         <Link to="cart" className="ml-auto">
@@ -72,6 +72,10 @@ const NavWrapper = styled.nav
     &:hover{
       transform: scale(1.1);
     }
+  }
+  .logo{
+    height:4rem;
+    width: 8rem;
   }
 
 `
