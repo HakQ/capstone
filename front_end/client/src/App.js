@@ -20,9 +20,11 @@ import Profile from "./components/Account/Profile.js";
 import MySell from "./components/Account/MySell.js";
 import MyOrder from "./components/Account/MyOrder.js";
 import Login from "./components/Account/Login.js"
-import Signup from "./components/Account/Signup.js"
+import Signup from "./components/Account/Signup.js";
+import SignupConfirm from "./components/Account/SignupConfirm.js"
 import Sell from "./components/Sell/Sell.js";
 import Cart from "./components/Cart/Cart.js";
+import CheckoutForm from "./components/Cart/CheckoutForm.js";
 import Detail from "./components/Browse/Detail.js";
 
 import {UserProvider} from "./UserContext.js";
@@ -47,12 +49,14 @@ class App extends Component {
                 <Route path="/guide" component={Guide}/>
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
+                <Route path="/signupconfirm" component={SignupConfirm} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/mysell" component={MySell} />
                 <Route path="/myorder" component={MyOrder} />
                 <Route path="/sell" component={Sell}/>
                 <Route path="/cart" component={Cart}/>
                 <Route path="/detail" component={Detail}/>
+                <Route path="/checkoutform" component={CheckoutForm}/>
                 <Route component={Default} />
               </Switch>
             </React.Fragment>

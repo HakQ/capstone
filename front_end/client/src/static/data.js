@@ -5,37 +5,40 @@ https://www.iconfinder.com/Makoto_msk */
 
 export const storeProducts = [
   {
+
     id: 1,
-    title: "Item 1",
+    title: "Great T-Shirt",
     img: "img/img1.jpeg",
     price: 10,
     retail:100,
     discount:0.7821,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 5,
-    endDate: new Date('April 7, 2019 18:36:00')
+    endDate: new Date('May 7, 2019 18:36:00')
 
   },
   {
     id: 2,
-    title: "Item 2",
+    title: "123456789abcdefgh",
     img: "img/img2.jpeg",
     price: 16,
     retail:100,
     discount:0.7821,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 8,
-    endDate: new Date('April 7, 2019 18:28:00')
+    endDate: new Date('May 7, 2019 18:28:00')
   },
   {
     id: 3,
@@ -44,6 +47,7 @@ export const storeProducts = [
     price: 16,
     retail:100,
     discount:0.7821,
+    size: "L",
     company: "idk",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -51,7 +55,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time:1,
-    endDate: new Date('April 28, 2019 18:28:00')
+    endDate: new Date('May 28, 2019 18:28:00')
   },
   {
     id: 4,
@@ -60,6 +64,7 @@ export const storeProducts = [
     price: 16,
     retail:100,
     discount:0.7821,
+    size: "L",
     company: "idk",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
@@ -67,7 +72,7 @@ export const storeProducts = [
     count: 0,
     total: 0,
     time: 10,
-    endDate: new Date('April 28, 2019 18:30:00')
+    endDate: new Date('May 28, 2019 18:30:00')
   },
   {
     id: 5,
@@ -77,13 +82,14 @@ export const storeProducts = [
     retail:100,
     discount:0.7821,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 30,
-    endDate: new Date('April 28, 2019 18:45:00')
+    endDate: new Date('May 28, 2019 18:45:00')
   },
   {
     id: 6,
@@ -93,13 +99,14 @@ export const storeProducts = [
     retail:100,
     discount:0.7821,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 2,
-    endDate: new Date('April 28, 2019 18:20:00')
+    endDate: new Date('May 28, 2019 18:20:00')
   },
   {
     id: 7,
@@ -109,13 +116,14 @@ export const storeProducts = [
     retail: 73,
     discount:0.781,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 3,
-    endDate: new Date('April 28, 2019 18:30:00')
+    endDate: new Date('May 28, 2019 18:30:00')
   },
   {
     id: 8,
@@ -125,13 +133,14 @@ export const storeProducts = [
     retail: 73,
     discount:0.781,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 14,
-    endDate: new Date('April 28, 2019 21:00:00')
+    endDate: new Date('May 28, 2019 21:00:00')
   },
   {
     id: 9,
@@ -141,13 +150,35 @@ export const storeProducts = [
     retail: 73,
     discount:0.781,
     company: "idk",
+    size: "L",
     info:
       "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
     inCart: false,
     count: 0,
     total: 0,
     time: 16,
-    endDate: new Date('April 28, 2019 21:00:00')
-  }
+    endDate: new Date('May 28, 2019 21:00:00')
+  },
+    {
+     "operation": "ADD",
+     "cart_id": "llgkjjk",
+     "Product_id": "randomi",
+     "UPC": "1000000",
+     "Seller_id": "someseller",
+     "Title": "randome",
+     "Price": 100,
+     "Competitor": 0,
+     "Discount": 20,
+     "Quantity": 3,
+     "QuantityDemand": 1,
+     "Size": "large",
+     "Description": "none",
+     "Color": "blue",
+     "Brand": "nike",
+     "Img": "none",
+     "Gender": "men",
+     "Category": "clothes",
+     "expireAt": "2019-05-07T08:26:14.177+00:00"
+    }
 ];
 

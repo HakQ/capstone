@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductList from "./ProductList.js";
 import Navbar from "../Navbar.js";
+import Footer from "../Footer.js"
 
 
 class Browse extends React.Component {
@@ -14,6 +15,7 @@ class Browse extends React.Component {
       <React.Fragment>
         <Navbar/>
         <ProductList/>
+        <Footer/>
       </React.Fragment>
     );
   }

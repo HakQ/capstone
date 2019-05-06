@@ -2,27 +2,63 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {ProductConsumer} from "../../ProductContext.js";
+import Timer from "../Browse/Timer.js"
 
 class CartProduct extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      initial_price:this.props.product.price,
+      price:this.props.product.price,
+      qty:1
+    }
+  }
+
+  change_qty=(e)=>{
+    let newPrice = this.state.initial_price * e.target.value;
+    this.setState({qty:e.target.value, price:newPrice});
+  }
+
   render() {
-    const {id,info,title,img,price, discount, retail, inCart, time} = this.props.product;
-    let discount_percent = Math.ceil(100*discount); 
+    const {id,info,title,img,price, discount, retail, inCart, endDate,size} = this.props.product;
+    let discount_percent = Math.ceil(100*discount);
 
     return (
       <ProductConsumer>{(value)=>{return(
         <ProductWrapper>
-          <div className="row justify-content-between">
-              <div className="col-5">
-                <h6 className="text-center"> {title} </h6>
-                <img src={img} className="d-block mx-auto" />
-                <button className="btn-addcart d-block mx-auto mt-1">
-                    Release to Shop
-                </button>
-              </div>
-              <div className="col-3 align-self-center">
-                <p>${price}</p>
-              </div>
+          <div className="row d-flex item">
+            <div className="col-3">
+              <h6 className="text-center"> {title} </h6>
+              <img src={img} className="d-block mx-auto itemImage" />
+            </div>
+            <div className="col-2">
+              <p>Size: {size} </p>
+            </div>
+            <div className="col-2">
+              <Timer expire={endDate} id={id}/>
+            </div>
+            <div className="col-1">
+              <select name="Qty" onChange={this.change_qty}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div className="col-2">
+              <p>${this.state.price}</p>
+            </div>
+            <div className="col-2">
+              <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(id)}}>Cancel</button>
+            </div>
           </div>
+          <hr/>
         </ProductWrapper>
       )}}
       </ProductConsumer>   
@@ -34,36 +70,11 @@ export default CartProduct;
 
 const ProductWrapper = styled.div
 `
-  .btn-addcart{
-    width: 50%;
-    background-color: var(--AmazonYellow);
-    border: 0.8px black solid;
-    padding: 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    box-shadow: 0.3rem;
-    border-radius: .25rem;
-    &:hover{
-      background-color: #FFB90B;
-      box-shadow: 0.75rem;
-    }
-    &:active {
-      box-shadow: 0 0.08rem #444;
-      transform: translateY(0.1rem);
-    }
-    outline:none;
+  .item{
+    align-items: center;
   }
-
-  img{
-    width: 8rem;
-    height: 8rem;
-  }
-
-  @media only screen and (max-width: 480px) {
-    p{
-      font-size: 0.5em;
-    }
+  .itemImage{
+    width:65%;
+    height:8rem;
   }
 `

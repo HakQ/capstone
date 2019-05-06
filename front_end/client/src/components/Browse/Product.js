@@ -23,8 +23,16 @@ class Product extends React.Component {
 
 
   render() {
-    const {id,title,img,price, discount, retail, inCart, time} = this.props.product;
+    const {id,title,img,price, discount, retail, inCart, time, size} = this.props.product;
     let discount_percent = Math.ceil(100*discount);
+    let name;
+
+    if(title.length > 14){
+      name = title.substr(0,16) + "...";
+    }
+    else{
+      name = title;
+    }
 
     const {endDate} = this.props.product;
 
@@ -60,7 +68,7 @@ class Product extends React.Component {
         <ProductWrapper className="col-sm-9 col-md-6 col-lg-3 my-2 mx-auto">
           <div className="card">
             <div className="card-header mt-1 mx-auto">
-              <h4><strong>{title}</strong></h4>
+              <h4><strong>{name}</strong></h4>
             </div>
             <div className="img-container">
               <Link to="/detail" onClick={()=>{value.setView(id)}} className="mx-auto">
@@ -68,18 +76,25 @@ class Product extends React.Component {
               </Link>
             </div>
             <div className="card-footer show-price mx-auto">
-              <h5 className="card-title ml-3">${price} </h5>
+              <h5 className="card-title ml-3">
+                ${price}
+                <span className="badge badge-danger discout_sign ml-2">you saved{discount_percent}%</span>
+              </h5>
               <h6 className="card-subtitle ml-3 smaller-text">
                 <span> Retail Price:</span><span className="cross-out">${retail}    </span> 
-                <span className="badge badge-danger">you saved{discount_percent}% </span>
               </h6>
+              <h6 className="ml-3 text-center">Size:{size} </h6>
             </div>
             <div className="timer mx-auto">
+              <span> Ends in </span>
               <Timer expire={endDate} id={id}/>
             </div>
             <div className="card-footer justify-content-center">
               <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
-              <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={this.changeDisplay}>
+              <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={()=>{
+                this.changeDisplay();
+                value.addToCart(id);
+              }}>
                 Claim to Cart
               </button>
             </div>
@@ -170,8 +185,12 @@ const ProductWrapper = styled.div
   .timer{
     font-size: 0.8rem;
     color: gray;
-    margin: -0.3rem;
-    padding: -0.3rem;
+    margin-top: -1.5rem;
+    padding-top: -1.5rem;
+  }
+
+  .discout_sign{
+    font-size: 0.7rem;
   }
   
 `

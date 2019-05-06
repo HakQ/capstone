@@ -3,6 +3,7 @@ import {ProductConsumer} from "../../ProductContext.js";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../Navbar.js";
+import Footer from "../Footer.js";
 import Timer from "./Timer.js";
 
 
@@ -33,7 +34,7 @@ class Detail extends React.Component {
           <React.Fragment>
             <Navbar/>
              <DetailWrapper className="mt-5">
-              <div className="container-fluid px-3" >
+              <div className="container px-3" >
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-sm-12 picture d-flex ">
                     <img src={img} className="" />
@@ -48,6 +49,7 @@ class Detail extends React.Component {
                       <h5 className="card-title ml-3">${price} </h5>
                       <p> {info} </p>
                       <div className="timer mx-auto text-center">
+                        <span> Ends in </span>
                         <Timer expire={endDate} id={id}/>
                       </div>
                       <div className="addcart-btn mx-auto d-flex">
@@ -72,6 +74,7 @@ class Detail extends React.Component {
                 </div>
               </div>
              </DetailWrapper>
+             <Footer/>
           </React.Fragment>
       )}}
       </ProductConsumer>

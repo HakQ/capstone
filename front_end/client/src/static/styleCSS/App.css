@@ -44,3 +44,90 @@ body{
     display:none;
 }
 
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  p{
+    font-size:10px;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  p{
+    font-size:12px;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  p{
+    font-size:1rem;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  p{
+    font-size:1rem;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}

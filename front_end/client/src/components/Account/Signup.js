@@ -40,8 +40,8 @@ class Signup extends Component {
   render(){
     return(
       <UserConsumer>{(value)=>{
-        if(value.logged){
-          return <Redirect to='/'/>
+        if(value.promptConfirm){
+          return <Redirect to='/signupconfirm'/>
         }
         else{
           return(

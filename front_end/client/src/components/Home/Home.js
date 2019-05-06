@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "../Navbar.js";
+import Footer from "../Footer.js";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -73,6 +74,7 @@ class Home extends React.Component {
             </div>
           </div>
         </HomeWrapper>
+        <Footer/>
       </div>
     );
   }

@@ -22,12 +22,24 @@ class ProductProvider extends React.Component {
     this.state = {
       product:{},
       viewProduct:{},
-      cartProduct:[]
+      cartProduct:[],
+      shippingCost:0,
     }
   }
 
   componentWillMount(){
-    this.setState({product:storeProducts})
+    try{
+      if(storeProducts[0].code==400){
+        console.log("error");
+      }
+      else{
+        this.setState({product:storeProducts})
+      }
+    }
+    catch(e){
+      console.log(e);
+    }
+
     // axios.get("http://localhost:3002/get_info",
     // {
     //   params:{
@@ -76,7 +88,7 @@ class ProductProvider extends React.Component {
 
   addToCart=(id)=>{
     const addCartProduct = this.state.product.find(item=>item.id===id);
-    const newProduct = this.state.product.filter((item) =>{ 
+    const newProducts = this.state.product.filter((item) =>{ 
       return item.id !== addCartProduct.id;  
     });
     let currentCart = this.state.cartProduct;
@@ -84,19 +96,45 @@ class ProductProvider extends React.Component {
 
     this.setState({
       cartProduct: currentCart,
-      product: newProduct
+      product: newProducts
     })
+  }
 
+  cancelFromCart=(id)=>{
+    //find the item from cart that to be removed
+    const removeCartProduct = this.state.cartProduct.find(item=>item.id===id); 
+
+    //make a new cart which the selected item to be remove is not there
+    const newProducts = this.state.cartProduct.filter((item) =>{ 
+      return item.id !== removeCartProduct.id;  
+    });
+
+
+    let currentProducts = this.state.product;
+    currentProducts.push(removeCartProduct)
+
+    this.setState({
+      cartProduct: newProducts,
+      product: currentProducts
+    })
   }
 
   expireHandler=(id)=>{
-    const newProduct = this.state.product.filter((item) =>{ 
+    const newProducts = this.state.product.filter((item) =>{ 
       return item.id !== id;  
     });
 
     this.setState({
-      product: newProduct
+      product: newProducts
     })
+  }
+
+  updateFromSearch=(query)=>{
+    console.log("Apache Solar: " + query);
+  }
+
+  calculateShipRate=(zipcode)=>{
+    console.log("cost for " +zipcode);
   }
 
   render() {
@@ -110,7 +148,11 @@ class ProductProvider extends React.Component {
             setView: this.setView,
             addToCart: this.addToCart,
             cartProduct:this.state.cartProduct,
-            expireHandler: this.expireHandler
+            expireHandler: this.expireHandler,
+            cancelFromCart:this.cancelFromCart,
+            updateFromSearch: this.updateFromSearch,
+            calculateShipRate: this.calculateShipRate,
+            shippingCost: this.shippingCost
           }
         }
       >
@@ -139,7 +181,6 @@ export {ProductConsumer, ProductProvider};
     //     host: '127...',
     //     port: 8000
     //   },
-
     // })
     // .then(function (response) {
     //   console.log("then :" + response);

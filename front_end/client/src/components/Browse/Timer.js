@@ -61,9 +61,7 @@ class Timer extends React.Component {
         }
 
         return(  
-          <div>
-            <p>Ends in {hours}:{mins}:{secs}</p>
-          </div>
+            <span>{hours}:{mins}:{secs}</span>
         )
       }}
       </ProductConsumer>  
