@@ -27,8 +27,8 @@ class Detail extends React.Component {
   render() {
     return (
       <ProductConsumer>{value=>{
-        const {id,title,img,price,inCart, info, time, endDate, retail,discount} = value.viewProduct;
-        let discount_percent = Math.ceil(100*discount);
+        const {Product_id,Title,Img,Price,inCart, Description, time, expireAt, Competitor,Discount} = value.viewProduct;
+        let discount_percent = Math.ceil(100*Discount);
 
         return(
           <React.Fragment>
@@ -37,26 +37,26 @@ class Detail extends React.Component {
               <div className="container px-3" >
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-sm-12 picture d-flex ">
-                    <img src={img} className="" />
+                    <img src={Img} className="" />
                   </div>
                   <div className="col-md-6 col-lg-6 col-sm-12 info d-flex">
                     <div>
-                      <h2 className="mb-3"> {title} </h2>
+                      <h2 className="mb-3"> {Title} </h2>
                       <h6 className="card-subtitle ml-3 smaller-text">
-                        <span> Retail Price:</span><span className="cross-out">${retail}</span> 
+                        <span> Retail Price:</span><span className="cross-out">${Competitor}</span> 
                         <span className="badge badge-danger">you saved{discount_percent}% </span>
                       </h6>
-                      <h5 className="card-title ml-3">${price} </h5>
-                      <p> {info} </p>
+                      <h5 className="card-title ml-3">${Price} </h5>
+                      <p> {Description} </p>
                       <div className="timer mx-auto text-center">
                         <span> Ends in </span>
-                        <Timer expire={endDate} id={id}/>
+                        <Timer expire={expireAt} id={Product_id}/>
                       </div>
                       <div className="addcart-btn mx-auto d-flex">
                         <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
                         <button className="btn btn-primary rounded-pill addCart pt-0 mt-0" style={{display:this.state.add_cart_display}} onClick={()=>{
                           this.changeDisplay();
-                          value.addToCart(id);
+                          value.addToCart(Product_id);
                         }}>
                           <i className="fas fa-cart-plus"/>
                           <span>Claim To Cart</span>

@@ -103,11 +103,11 @@ const NavWrapper = styled.nav
   }
 
   .browse{
-    margin-right:5em;
+    margin-right:8em;
   }
 
   .account{
-    margin-left: 2em;
+    margin-left: 10em;
   }
 
   .goCart{

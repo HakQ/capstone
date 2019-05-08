@@ -18,9 +18,7 @@ class ProductList extends React.Component {
                 <ProductConsumer>
                   {value=>{
                     return value.product.map(product=>{
-                      // if(!product.inCart){
-                        return <Product key={product.id} product={product}/>;
-                      // }
+                      return <Product key={product.Product_id} product={product}/>;
                     });
                   }}
                 </ProductConsumer>

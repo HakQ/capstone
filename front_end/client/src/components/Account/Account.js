@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {UserConsumer} from "../../UserContext.js";
+import {ProductConsumer} from "../../ProductContext.js";
 import styled from "styled-components";
 
  
@@ -12,7 +12,7 @@ class Account extends React.Component {
   render() {
     return (
       <AccountWrapper className="dropdown full-size;">
-        <UserConsumer>{(value) =>{return(
+        <ProductConsumer>{(value) =>{return(
           <div>
             {
               value.logged
@@ -34,14 +34,14 @@ class Account extends React.Component {
                 )
                 :(
                   <div>
-                    <Link to="signup" className="white" href="#">Signup</Link>
-                    <span className="white"> // </span>
+                    <Link to="signup" className="white" href="#">Sign Up</Link>
+                    <span className="white"> / </span>
                     <Link to="login" className="white" href="#">Login</Link>
                   </div>
                 )
             }
           </div>
-        )}}</UserConsumer>
+        )}}</ProductConsumer>
       </AccountWrapper>
      )
    }

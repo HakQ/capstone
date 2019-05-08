@@ -27,7 +27,6 @@ import Cart from "./components/Cart/Cart.js";
 import CheckoutForm from "./components/Cart/CheckoutForm.js";
 import Detail from "./components/Browse/Detail.js";
 
-import {UserProvider} from "./UserContext.js";
 import {ProductProvider} from "./ProductContext.js";
 
 //Sets up the routes for the project
@@ -38,7 +37,6 @@ class App extends Component {
 
   render() {
     return (
-      <UserProvider>
         <ProductProvider>
           <Router>
             <React.Fragment>
@@ -62,7 +60,6 @@ class App extends Component {
             </React.Fragment>
           </Router>
         </ProductProvider>
-      </UserProvider>
     );
   }
 }

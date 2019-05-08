@@ -16,6 +16,12 @@ body{
   font-family: 'Oswald', sans-serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
+
+  position:relative; 
+  margin:0;
+  padding:0;
+  overflow:auto; 
+
 }
 
 .text-title{

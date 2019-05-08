@@ -23,45 +23,20 @@ class Product extends React.Component {
 
 
   render() {
-    const {id,title,img,price, discount, retail, inCart, time, size} = this.props.product;
-    let discount_percent = Math.ceil(100*discount);
+    const {Product_id,Title,Img,Price, Discount, Competitor, inCart, time, Size} = this.props.product;
+    let discount_percent = Math.ceil(100*Discount);
     let name;
 
-    if(title.length > 14){
-      name = title.substr(0,16) + "...";
+    if(Title.length > 14){
+      name = Title.substr(0,16) + "...";
     }
     else{
-      name = title;
+      name = Title;
     }
 
-    const {endDate} = this.props.product;
-
-    /**********playground mode******/
-
-    // let now = new Date();
-    // console.log("time: ", endDate);
-    // endDate.setSeconds( endDate.getSeconds() + 1 );
-    // console.log("second added: ", endDate);
+    const {expireAt} = this.props.product;
 
 
-
-
-    // let now = new Date().getTime();
-    // let t = endDate - now;
-    // if (t >= 0) {
-    //   let days = Math.floor(t / (1000 * 60 * 60 * 24));
-    //   let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    //   let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-    //   let secs = Math.floor((t % (1000 * 60)) / 1000);
-
-    // }
-    // else{
-    //   console.log("time expired");
-    // }
-
-
-
-    /*************************/ 
 
     return (
       <ProductConsumer>{(value)=>{return(
@@ -71,29 +46,29 @@ class Product extends React.Component {
               <h4><strong>{name}</strong></h4>
             </div>
             <div className="img-container">
-              <Link to="/detail" onClick={()=>{value.setView(id)}} className="mx-auto">
-                <img src={img} className="card-img-top mx-auto d-block" alt="image of product"/>
+              <Link to="/detail" onClick={()=>{value.setView(Product_id)}} className="mx-auto">
+                <img src={Img} className="card-img-top mx-auto d-block" alt="image of product"/>
               </Link>
             </div>
             <div className="card-footer show-price mx-auto">
               <h5 className="card-title ml-3">
-                ${price}
+                ${Price}
                 <span className="badge badge-danger discout_sign ml-2">you saved{discount_percent}%</span>
               </h5>
               <h6 className="card-subtitle ml-3 smaller-text">
-                <span> Retail Price:</span><span className="cross-out">${retail}    </span> 
+                <span> Retail Price:</span><span className="cross-out">${Competitor}    </span> 
               </h6>
-              <h6 className="ml-3 text-center">Size:{size} </h6>
+              <h6 className="ml-3 text-center">Size:{Size} </h6>
             </div>
             <div className="timer mx-auto">
               <span> Ends in </span>
-              <Timer expire={endDate} id={id}/>
+              <Timer expire={expireAt} id={Product_id}/>
             </div>
             <div className="card-footer justify-content-center">
               <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
               <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={()=>{
                 this.changeDisplay();
-                value.addToCart(id);
+                value.addToCart(Product_id);
               }}>
                 Claim to Cart
               </button>

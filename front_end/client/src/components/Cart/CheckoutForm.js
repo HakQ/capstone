@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
-import {UserConsumer} from "../../UserContext.js";
+import {ProductConsumer} from "../../ProductContext.js";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 

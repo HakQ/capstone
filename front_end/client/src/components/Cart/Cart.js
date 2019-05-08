@@ -86,7 +86,7 @@ class Cart extends React.Component {
               {
                 value.cartProduct.map(product=>{
                   return (
-                      <CartProduct key={product.id} product={product}/>
+                      <CartProduct key={product.Product_id} product={product}/>
                   )
                 })
               }

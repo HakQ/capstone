@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {UserConsumer} from "../../UserContext.js";
+import {ProductConsumer} from "../../ProductContext.js";
 import { Redirect } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import styled from "styled-components";
@@ -19,7 +19,7 @@ class Signup extends Component {
 
   render(){
     return(
-      <UserConsumer>{(value)=>{
+      <ProductConsumer>{(value)=>{
         // value.handleSignUpConfirm("182881");
         if(value.logged){
           return <Redirect to='/'/>
@@ -51,7 +51,7 @@ class Signup extends Component {
           </SignupWrapper>
 
         );  
-      }}</UserConsumer>
+      }}</ProductConsumer>
     )
   }
 

@@ -8,8 +8,8 @@ class CartProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initial_price:this.props.product.price,
-      price:this.props.product.price,
+      initial_price:this.props.product.Price,
+      price:this.props.product.Price,
       qty:1
     }
   }
@@ -20,22 +20,22 @@ class CartProduct extends React.Component {
   }
 
   render() {
-    const {id,info,title,img,price, discount, retail, inCart, endDate,size} = this.props.product;
-    let discount_percent = Math.ceil(100*discount);
+    const {Product_id,Description,Title,Img,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
+    let discount_percent = Math.ceil(100*Discount);
 
     return (
       <ProductConsumer>{(value)=>{return(
         <ProductWrapper>
           <div className="row d-flex item">
             <div className="col-3">
-              <h6 className="text-center"> {title} </h6>
-              <img src={img} className="d-block mx-auto itemImage" />
+              <h6 className="text-center"> {Title} </h6>
+              <img src={Img} className="d-block mx-auto itemImage" />
             </div>
             <div className="col-2">
-              <p>Size: {size} </p>
+              <p>Size: {Size} </p>
             </div>
             <div className="col-2">
-              <Timer expire={endDate} id={id}/>
+              <Timer expire={expireAt} id={Product_id}/>
             </div>
             <div className="col-1">
               <select name="Qty" onChange={this.change_qty}>
@@ -55,7 +55,7 @@ class CartProduct extends React.Component {
               <p>${this.state.price}</p>
             </div>
             <div className="col-2">
-              <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(id)}}>Cancel</button>
+              <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(Product_id)}}>Cancel</button>
             </div>
           </div>
           <hr/>
