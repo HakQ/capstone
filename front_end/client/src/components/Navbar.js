@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import logo from "./../static/SnapLogo.jpg";
 import styled from "styled-components";
 import Account from "./Account/Account.js";
 import{ProductConsumer} from "../ProductContext.js";
@@ -21,7 +20,7 @@ class Navbar extends Component {
     return (
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
         <Link to="/" className="logo">
-          <img src={logo} alt="Store Logo" className="logo-image"/>
+          <img src="img/SnapLogo.jpg" alt="Store Logo" className="logo-image"/>
         </Link>
 
         {/*<!--This is Search Bar-->*/}
@@ -107,7 +106,7 @@ const NavWrapper = styled.nav
   }
 
   .account{
-    margin-left: 10em;
+    margin-left: 5em;
   }
 
   .goCart{

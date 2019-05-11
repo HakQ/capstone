@@ -1,0 +1,139 @@
+/*Setting some variables to use in css exampleOfUse var(--mainBlue)*/
+:root{
+  --mainBlue:#2a2a72;
+  --lightBlue:#009ffd;
+  --mainWhite:#f3f3f3;
+  --mainDark:#232528;
+  --mainYellow:#ffa400;
+  --AmazonDark:#232F3E;
+  --AmazonYellow:#FEBD69;
+
+};
+
+
+/*Need to overwrite bootstrap with !important*/
+body{
+  font-family: 'Oswald', sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important;
+
+  position:relative; 
+  margin:0;
+  padding:0;
+  overflow:auto; 
+
+}
+
+.text-title{
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.text-blue{
+  color:var(--mainBlue);
+}
+
+.amazon-yellow{
+  background:var(--AmazonYellow);
+  color:black;
+}
+
+.no-link{
+    color:white !important;
+    text-decoration:none !important;
+    font-size:1.2rem;
+
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  p{
+    font-size:10px;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  p{
+    font-size:12px;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  p{
+    font-size:1rem;
+  }
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:19px;
+  }
+  h3{
+    font-size:18px;
+  }
+  h4{
+    font-size:17px;
+  }
+  h5{
+    font-size:16px;
+  }
+  h6{
+    font-size:15px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  p{
+    font-size:1rem;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}

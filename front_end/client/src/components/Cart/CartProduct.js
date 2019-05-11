@@ -20,7 +20,7 @@ class CartProduct extends React.Component {
   }
 
   render() {
-    const {Product_id,Description,Title,Img,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
+    const {Product_id,Description,Title,IMG,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
     let discount_percent = Math.ceil(100*Discount);
 
     return (
@@ -29,7 +29,7 @@ class CartProduct extends React.Component {
           <div className="row d-flex item">
             <div className="col-3">
               <h6 className="text-center"> {Title} </h6>
-              <img src={Img} className="d-block mx-auto itemImage" />
+              <img src={IMG} className="d-block mx-auto itemImage" />
             </div>
             <div className="col-2">
               <p>Size: {Size} </p>

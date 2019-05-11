@@ -33,7 +33,7 @@ class Account extends React.Component {
                   </div>
                 )
                 :(
-                  <div>
+                  <div className="bold-text">
                     <Link to="signup" className="white" href="#">Sign Up</Link>
                     <span className="white"> / </span>
                     <Link to="login" className="white" href="#">Login</Link>
@@ -69,6 +69,11 @@ const AccountWrapper = styled.div
     height: 100%;
     width:100%;
   }
+
+  .bold-text{
+    font-weight: 800;
+  }
+
 
 `
 

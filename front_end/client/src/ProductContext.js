@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {storeProducts} from "./static/data.js";
+import {storeProducts} from "./data.js";
 import axios from "axios";
 import {Auth} from "aws-amplify";
 
 
 
 const ProductContext = React.createContext();
+
 //create the provider class
 class ProductProvider extends React.Component {
   constructor(props) {
@@ -20,42 +21,13 @@ class ProductProvider extends React.Component {
       promptConfirm:false,
       passReminder:"remember password need to be atleast 8 letters with atleast a number, lowercase, uppercase, and special symbol.",
 
-      product:{},
+      product:[],
       viewProduct:{},
       cartProduct:[],
       shippingCost:0,
+
     }
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.product !== this.state.product) {
-  //     try{
-  //       if(storeProducts[0].code==400){
-  //           console.log("error");
-  //       }
-  //       else{
-  //         this.setState({product:this.state.product})
-  //       }
-  //     }
-  //     catch(e){
-  //       console.log(e);
-  //     }
-  //   }
-
-  //   if (prevState.cartProduct !== this.state.cartProduct) {
-  //     try{
-  //       if(storeProducts[0].code==400){
-  //           console.log("error");
-  //       }
-  //       else{
-  //         this.setState({cartProduct:this.state.cartProduct})
-  //       }
-  //     }
-  //     catch(e){
-  //       console.log(e);
-  //     }
-  //   }
-  // }
 
   componentWillMount(){
     try{
@@ -70,37 +42,9 @@ class ProductProvider extends React.Component {
       console.log(e);
     }
 
-    // axios.get("http://localhost:3002/get_info",
-    // {
-    //   params:{
-    //     upc:"888411924708"
-    //   },
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    // .then(res=>{
-    //     let info = res;
-    //     this.setState({product: info});
-    //     console.log(res);
-    // })
-    // .catch(err=>{
-    //     console.log(err);
-    // })
   }
 
   componentDidMount() {
-    // this.interval = setInterval(() => {
-    //   axios.get("54.198.165.68:3003/products")
-    //   .then(res=>{
-    //     let info = res;
-    //     this.setState({product: info});
-    //     console.log(res);
-    //   })
-    //   .catch(err=>{
-    //     console.log(err);
-    //   })
-    // }, 10000);
 
   }
 
@@ -158,32 +102,53 @@ class ProductProvider extends React.Component {
           password: pw,
           error_message:""
         });
-////////////////////trying retrieve cart///////////
+        /************trying retrieve cart**********/
         var data = {
           "operation": "RETRIEVE",
-          "cart_id": "llgkjjk"
+          "cart_id": em
         };
-    let url='https://oef5k6v3fc.execute-api.us-east-1.amazonaws.com/default/aws-nodejs-dev-cart';
-    
-    await fetch(url, {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      mode:'cors',
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>
-      res.json()
-    )
-    .then(res =>{
-      this.setState({
-        cartProduct: res
-      });
-      console.log(this.state.cartProduct);
-    })
-    .catch(error => console.error('Error:', error));
-////////////////////////////////////////////////   
+        let url='https://mhup9f5njl.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
+
+        await fetch(url, {
+          method: 'POST', // or 'PUT'
+          body: JSON.stringify(data), // data can be `string` or {object}!
+          mode:'cors',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res=>
+          res.json()
+        )
+        .then((res)=> {
+          console.log("FRRRRROM THE SERVER: ", res);
+          if("Im empty fill me up" != res){
+            let currentCart = this.state.cartProduct;
+            let userCart = res;
+
+            for( let i=0; i<currentCart.length; i++){
+              for( let j=0; j<userCart.length; j++){
+                  if(currentCart[i].Product_id == userCart[j].Product_id){
+                    currentCart.splice(i, 1);
+                  }
+                }
+            }
+
+            let returnProduct = currentCart.concat(this.state.product);
+
+            this.setState({
+              product: returnProduct,
+              cartProduct: res
+            });
+
+          }
+          else{
+            this.setState({
+              cartProduct:[]
+            })
+          }
+        })
+        .catch(error => console.error('Error:', error));
       }
       catch (e) {
         this.setState({
@@ -330,10 +295,6 @@ class ProductProvider extends React.Component {
   }
 
 
-
-
-
-
   /*******************Product Info methods**********************/
   //functions for children to interact with the context api
   setView=(Product_id)=>{
@@ -346,26 +307,30 @@ class ProductProvider extends React.Component {
   addToCart= async (Product_id)=>{
     const addCartProduct = this.state.product.find(item=>item.Product_id===Product_id);
 
-//////////////////adding shit to cart after you sign in/////////////////////////////////
-  if(this.state.logged_in){
-    var data = addCartProduct;
+    //Adding Stuff to cart if signed in
+    if(this.state.logged_in){
+      var data = addCartProduct;
+      
+      data.operation = "ADD";
+      data.cart_id = this.state.email;
+      data.QuantityDemand = "1";
+      data.Quantity ="1";
 
-    let url='https://oef5k6v3fc.execute-api.us-east-1.amazonaws.com/default/aws-nodejs-dev-cart';
-    await fetch(url, {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      mode:'cors',
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
-  }
+      console.log("GOING TO SERVER: ", data);
 
-///////////////////////////////////////////////////
-
+      let url='https://mhup9f5njl.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
+      await fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        mode:'cors',
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+    }
 
     const newProducts = this.state.product.filter((item) =>{ 
       return item.Product_id !== addCartProduct.Product_id;  
@@ -379,14 +344,40 @@ class ProductProvider extends React.Component {
     })
   }
 
-  cancelFromCart=(Product_id)=>{
+  cancelFromCart= async(Product_id)=>{
     //find the item from cart that to be removed
-    const removeCartProduct = this.state.cartProduct.find(item=>item.Product_id===Product_id); 
+    const removeCartProduct = this.state.cartProduct.find(item=>item.Product_id===Product_id);
+
+    //remove Stuff to cart if signed in
+    if(this.state.logged_in){
+      var data = {
+          "operation": "REMOVE",
+          "cart_id": this.state.email,
+          "Product_id":removeCartProduct.Product_id
+      }
+      
+
+      let url='https://mhup9f5njl.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
+      await fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        mode:'cors',
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+    }
+
+
 
     //make a new cart which the selected item to be remove is not there
     const newProducts = this.state.cartProduct.filter((item) =>{ 
       return item.Product_id !== removeCartProduct.Product_id;  
     });
+
 
 
     let currentProducts = this.state.product;
@@ -403,8 +394,14 @@ class ProductProvider extends React.Component {
       return item.Product_id !== Product_id;  
     });
 
+    const newCartProducts = this.state.cartProduct.filter((item) =>{ 
+      return item.Product_id !== Product_id;  
+    });
+
+
     this.setState({
-      product: newProducts
+      product: newProducts,
+      cartProduct:newCartProducts
     })
   }
 
@@ -412,9 +409,53 @@ class ProductProvider extends React.Component {
     console.log("Apache Solar: " + query);
   }
 
-  calculateShipRate=(zipcode)=>{
-    console.log("cost for " +zipcode);
+  calculateShipRate = async (zipcode)=>{
+    var data = {
+      "addressFrom": [
+        {
+          "address": {
+            "zip": "43001",
+            "country": "US"
+          }
+        },
+      ],
+
+      "addressTo": {
+        "zip": "10465",
+        "country": "US"
+      },
+
+      "parcels": [
+        {
+          "parcel": {
+            "length": "35",
+            "width": "15",
+            "height": "25",
+            "distance_unit": "in",
+            "weight": "2",
+            "mass_unit": "lb"
+          }
+        }
+      ]
+    }
+
+
+    let url='https://jld0cpfhvi.execute-api.us-east-1.amazonaws.com/default/shipppp-dev-hello';
+      await fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        mode:'cors',
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
   }
+
+      
+
 
   render() {
     return (
@@ -441,7 +482,7 @@ class ProductProvider extends React.Component {
             cancelFromCart:this.cancelFromCart,
             updateFromSearch: this.updateFromSearch,
             calculateShipRate: this.calculateShipRate,
-            shippingCost: this.shippingCost
+            shippingCost: this.shippingCost,
           }
         }
       >

@@ -25,12 +25,14 @@ class Cart extends React.Component {
     super(props);
     this.state = {
       zipcode: "",
+
     }
   }
 
   change_zipcode = (event)=>{
     this.setState({zipcode: event.target.value});
   }
+
 
 
   render() {
@@ -55,6 +57,8 @@ class Cart extends React.Component {
             </Link>
           )
         }
+
+        let cartItems = value.cartProduct;
 
         return(
           <div>
@@ -84,13 +88,14 @@ class Cart extends React.Component {
               </div>
               <hr/>
               {
-                value.cartProduct.map(product=>{
+                cartItems.map(product=>{
                   return (
                       <CartProduct key={product.Product_id} product={product}/>
                   )
                 })
               }
               <div className="row mt-5">
+                {/*ship query*/}
                 <div className="col-4">
                   <form className="input-group searchBar" onSubmit={(event)=>{
                     event.preventDefault();
@@ -102,6 +107,7 @@ class Cart extends React.Component {
                     </button>
                   </form>
                 </div>
+                {/*ship cost response*/}
                 <div className="col-4">
                   {value.shippingCost==0?
                     <p></p>:

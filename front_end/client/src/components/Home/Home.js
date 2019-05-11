@@ -3,6 +3,7 @@ import Navbar from "../Navbar.js";
 import Footer from "../Footer.js";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import ControlledCarousel from "./ControlledCarousel.js";
 
 class Home extends React.Component {
   render() {
@@ -11,22 +12,10 @@ class Home extends React.Component {
         <Navbar/>
         <HomeWrapper>
           {/*<!--This is the cover part of the home page which will lead to browse page-->*/}
-          <div className="jumbotron my-4 mx-3 cover">
-            <div className="text-center">
-              <h2 className="display-4">Best Deal You will ever find</h2>
-              <p className="lead">supported by the communities all over the country to find you the best deal out there!</p>
-            </div>
-            <div className="text-center">
-              <Link to="/browse">
-                <button className="btn btn-primary">
-                  <span>Shop Now</span>
-                </button>
-              </Link>
-            </div>
-          </div>
+          <ControlledCarousel/>
 
           {/*<!--about us message which will lead to about page-->*/}
-          <div className="about my-5 d-flex">
+          <div className="about d-flex">
               <div>
                 <h2 className="text-center">What are we all about?</h2>
                 <p className="text-center mx-5 my-2">
@@ -48,7 +37,7 @@ class Home extends React.Component {
           </div>
 
           {/*<!--how to become a seller, go to guide-->*/}
-          <div className="guide jumbotron my-4 mx-3">
+          <div className="guide jumbotron my-4 mx-3 my-5">
             <div className="container">
               <div className="row">
                 <div className="col-4">
@@ -95,6 +84,8 @@ const HomeWrapper = styled.div
   .about{
     height: 20rem;
     align-items: center;
+    margin-top:10rem;
+    margin-bottom: 10rem;
   }
 
   .guide{
@@ -103,11 +94,19 @@ const HomeWrapper = styled.div
     display: block;
     background-size: 100% 100%;
     padding: 8rem;
+    height: 40rem;
   }
 
   .box{
-    border: solid black 1px;
+    border: solid red 3px;
+  }
+
+  .margin-bot{
+    margin-bottom: 10rem;
   }
 `
 
 export default Home;
+
+
+

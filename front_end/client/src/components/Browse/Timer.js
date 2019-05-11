@@ -32,9 +32,9 @@ class Timer extends React.Component {
 
   render() {
     //figure out the clock logic
-    let expire = this.props.expire;
+    let expire = new Date(this.props.expire); 
     let now = new Date().getTime();
-
+    
     let days = 0;
     let hours = 0;
     let mins = 0;

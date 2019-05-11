@@ -23,7 +23,7 @@ class Product extends React.Component {
 
 
   render() {
-    const {Product_id,Title,Img,Price, Discount, Competitor, inCart, time, Size} = this.props.product;
+    const {Product_id,Title,IMG,Price, Discount, Competitor, inCart, time, Size} = this.props.product;
     let discount_percent = Math.ceil(100*Discount);
     let name;
 
@@ -47,7 +47,7 @@ class Product extends React.Component {
             </div>
             <div className="img-container">
               <Link to="/detail" onClick={()=>{value.setView(Product_id)}} className="mx-auto">
-                <img src={Img} className="card-img-top mx-auto d-block" alt="image of product"/>
+                <img src={IMG} className="card-img-top mx-auto d-block" alt="image of product"/>
               </Link>
             </div>
             <div className="card-footer show-price mx-auto">

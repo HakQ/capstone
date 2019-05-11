@@ -40,7 +40,7 @@ let FooterContainer = styled.div
   bottom:0;
   right:0;
   left:0;
-  margin-top:30rem;
+  margin-top:25rem;
   color:white;
   font-weight: 800;
 

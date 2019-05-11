@@ -27,7 +27,7 @@ class Detail extends React.Component {
   render() {
     return (
       <ProductConsumer>{value=>{
-        const {Product_id,Title,Img,Price,inCart, Description, time, expireAt, Competitor,Discount} = value.viewProduct;
+        const {Product_id,Title,IMG,Price,inCart, Description, time, expireAt, Competitor,Discount} = value.viewProduct;
         let discount_percent = Math.ceil(100*Discount);
 
         return(
@@ -37,7 +37,7 @@ class Detail extends React.Component {
               <div className="container px-3" >
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-sm-12 picture d-flex ">
-                    <img src={Img} className="" />
+                    <img src={IMG} className="" />
                   </div>
                   <div className="col-md-6 col-lg-6 col-sm-12 info d-flex">
                     <div>

@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import "./static/styleCSS/App.css";
+import "./App.css";
 
 //the components i created
 import Navbar from "./components/Navbar.js";
