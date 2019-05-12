@@ -23,7 +23,7 @@ class Footer extends React.Component {
           </Link>
         </div>
         <div className="mx-5">
-          <Link to="/" className="white">
+          <Link to="/guide" className="white">
             Terms Of Service
           </Link>
         </div>

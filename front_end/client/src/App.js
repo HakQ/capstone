@@ -29,16 +29,21 @@ import Detail from "./components/Browse/Detail.js";
 
 import {ProductProvider} from "./ProductContext.js";
 
+import ScrollToTop from "./Utility/ScrollToTop.js";
+
+
 //Sets up the routes for the project
 class App extends Component {
   constructor(props){
     super(props);
   }
 
+
   render() {
     return (
         <ProductProvider>
           <Router>
+            <ScrollToTop>
             <React.Fragment>
               <Switch>
                 <Route exact path="/" component={Home}/>
@@ -58,6 +63,7 @@ class App extends Component {
                 <Route component={Default} />
               </Switch>
             </React.Fragment>
+            </ScrollToTop>
           </Router>
         </ProductProvider>
     );

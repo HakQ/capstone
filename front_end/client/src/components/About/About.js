@@ -62,7 +62,7 @@ class About extends React.Component {
                     <div class="card m-2">
                       <img src="img/qiuqun.jpg" alt="asian guy slurp burger" className="card-img-top"/>
                       <div class="card-body">
-                        <p class="card-text">Qiuqun Wang</p>
+                        <p class="card-text">Qiuqun</p>
                       </div>
                     </div>
                     <div class="card m-2">
