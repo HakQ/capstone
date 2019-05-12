@@ -34,7 +34,7 @@ class Login extends Component {
               <LoginWrapper className="container mt-5">
                 <div className="text-center">
                   <Link to="/">
-                    <img src="img/SnapLogo.jpg" className="logo" />
+                    <img src="img/SnapLogo.png" className="logo" />
                   </Link>
                 </div>
                 <div className="row justify-content-center p-5" >

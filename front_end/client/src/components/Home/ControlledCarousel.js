@@ -39,7 +39,7 @@ class ControlledCarousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="background.jpg"
+              src="img/background.jpg"
               alt="First slide"
             />
             <Carousel.Caption>
@@ -59,7 +59,7 @@ class ControlledCarousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="background2.jpg"
+              src="img/background2.jpg"
               alt="Third slide"
             />
 
@@ -80,7 +80,7 @@ class ControlledCarousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="background3.jpg"
+              src="img/background3.jpg"
               alt="Third slide"
             />
 

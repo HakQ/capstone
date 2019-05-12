@@ -66,7 +66,7 @@ class Cart extends React.Component {
             <CartWrapper className="container mb-5">
               <div className="row d-flex center">
                 <Link to="/" className="col-4">
-                  <img src="SnapLogo.jpg" alt="website logo" className="logo mt-3 mb-5"/>
+                  <img src="img/SnapLogo.png" alt="website logo" className="logo mt-3 mb-5"/>
                 </Link>
               </div>
               <div className="header row d-flex">

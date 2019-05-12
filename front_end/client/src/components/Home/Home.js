@@ -89,7 +89,7 @@ const HomeWrapper = styled.div
   }
 
   .guide{
-    background-image: url("doggyShip.jpg");
+    background-image: url("img/doggyShip.jpg");
     background-repeat: no-repeat;
     display: block;
     background-size: 100% 100%;

@@ -24,9 +24,9 @@ class Account extends React.Component {
                     </Link>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" >
                       <div className="text-center">
-                        <Link to="profile" className="dropdown-item" href="#">Profile</Link>
+                        {/*<Link to="profile" className="dropdown-item" href="#">Profile</Link>
                         <Link to="mysell" className="dropdown-item" href="#">My Sell</Link>
-                        <Link to="myorder" className="dropdown-item" href="#">My Order</Link>
+                        <Link to="myorder" className="dropdown-item" href="#">My Order</Link>*/}
                         <button className="no-design" onClick={value.handleLogout}>Logout</button>
                       </div>
                     </div>

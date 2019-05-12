@@ -20,7 +20,7 @@ class Navbar extends Component {
     return (
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
         <Link to="/" className="logo">
-          <img src="img/SnapLogo.jpg" alt="Store Logo" className="logo-image"/>
+          <img src="img/SnapLogo.png" alt="Store Logo" className="logo-image"/>
         </Link>
 
         {/*<!--This is Search Bar-->*/}

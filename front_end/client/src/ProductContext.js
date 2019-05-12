@@ -22,8 +22,8 @@ class ProductProvider extends React.Component {
       passReminder:"remember password need to be atleast 8 letters with atleast a number, lowercase, uppercase, and special symbol.",
 
       product:[],
-      viewProduct:{},
       cartProduct:[],
+      viewProduct:{},
       shippingCost:0,
 
     }
@@ -117,9 +117,12 @@ class ProductProvider extends React.Component {
             'Content-Type': 'application/json'
           }
         })
-        .then(res=>
-          res.json()
-        )
+        .then(res=>{
+          if (!res.ok) {
+            throw Error(res.statusText);
+          }
+          return res.json()
+        })
         .then((res)=> {
           console.log("FRRRRROM THE SERVER: ", res);
           if("Im empty fill me up" != res){
@@ -304,6 +307,7 @@ class ProductProvider extends React.Component {
     })
   }
 
+  /***************************addToCart()***************************************/  
   addToCart= async (Product_id)=>{
     const addCartProduct = this.state.product.find(item=>item.Product_id===Product_id);
 
@@ -327,10 +331,16 @@ class ProductProvider extends React.Component {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => res.json())
+      .then(res=>{
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json()
+      })
       .then(response => console.log('Success:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
     }
+
 
     const newProducts = this.state.product.filter((item) =>{ 
       return item.Product_id !== addCartProduct.Product_id;  
@@ -344,6 +354,7 @@ class ProductProvider extends React.Component {
     })
   }
 
+  /***************************CancelFromCart()***************************************/
   cancelFromCart= async(Product_id)=>{
     //find the item from cart that to be removed
     const removeCartProduct = this.state.cartProduct.find(item=>item.Product_id===Product_id);
@@ -366,7 +377,12 @@ class ProductProvider extends React.Component {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => res.json())
+      .then(res=>{
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json()
+      })
       .then(response => console.log('Success:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
     }
@@ -449,8 +465,12 @@ class ProductProvider extends React.Component {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
+      .then(res=>{
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json()
+      })      .then(response => console.log('Success:', JSON.stringify(response)))
       .catch(error => console.error('Error:', error));
   }
 
