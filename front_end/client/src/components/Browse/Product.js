@@ -27,8 +27,8 @@ class Product extends React.Component {
     let discount_percent = Math.ceil(100*Discount);
     let name;
 
-    if(Title.length > 14){
-      name = Title.substr(0,16) + "...";
+    if(Title.length > 10){
+      name = Title.substr(0,10) + "...";
     }
     else{
       name = Title;

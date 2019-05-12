@@ -27,28 +27,33 @@ class Detail extends React.Component {
   render() {
     return (
       <ProductConsumer>{value=>{
-        const {Product_id,Title,IMG,Price,inCart, Description, time, expireAt, Competitor,Discount} = value.viewProduct;
+        const {Product_id,Title,IMG,Price,inCart, Description, time, expireAt, Competitor,Discount, Size} = value.viewProduct;
         let discount_percent = Math.ceil(100*Discount);
 
         return(
           <React.Fragment>
             <Navbar/>
              <DetailWrapper className="mt-5">
-              <div className="container px-3" >
+              <div className="text-center mb-5">
+                <Link to="/">
+                  <img src="img/SnapLogo.png" className="logo" />
+                </Link>
+              </div>
+
+              <div className="container mt-5" >
                 <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-12 picture d-flex ">
-                    <img src={IMG} className="" />
+                  <div className="col-lg-6 col-md-6 col-sm-12 picture d-flex">
+                    <img src={IMG} className="box" />
                   </div>
                   <div className="col-md-6 col-lg-6 col-sm-12 info d-flex">
                     <div>
-                      <h2 className="mb-3"> {Title} </h2>
-                      <h6 className="card-subtitle ml-3 smaller-text">
-                        <span> Retail Price:</span><span className="cross-out">${Competitor}</span> 
-                        <span className="badge badge-danger">you saved{discount_percent}% </span>
-                      </h6>
-                      <h5 className="card-title ml-3">${Price} </h5>
+                      <h2> {Title} </h2>
+                      <hr/>
+                      <h6><span className="cross-out">${Competitor}</span> <span className="badge badge-danger">you saved{discount_percent}% </span></h6>
+                      <h6 className="card-title">${Price} </h6>
+                      <h6>Size: {Size}</h6>
                       <p> {Description} </p>
-                      <div className="timer mx-auto text-center">
+                      <div className="timer mx-auto text-center margin-4rem">
                         <span> Ends in </span>
                         <Timer expire={expireAt} id={Product_id}/>
                       </div>
@@ -65,10 +70,11 @@ class Detail extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="row justify-content-center my-3">
+                <div className="row justify-content-center  margin-12rem">
                   <Link to="/browse">
                     <button className="btn btn-secondary">
-                      <span>Go Back</span>
+                      <i class="fas fa-arrow-left"></i>
+                      <span> Go Back</span>
                     </button>
                   </Link>
                 </div>
@@ -84,9 +90,22 @@ class Detail extends React.Component {
 
 const DetailWrapper = styled.div
 `
+  .margin-12rem{
+    margin-top: 12rem;
+  }
+
+  .margin-4rem{
+    margin-top: 4rem;
+  }
+
+  .logo{
+    width:16rem;
+    height:7rem;
+  }
+
   img {
-    width: 50%;
-    height: 18rem;
+    width: 20rem;
+    height: 25rem;
   }
   
   .row{
@@ -116,7 +135,7 @@ const DetailWrapper = styled.div
   }
 
   .box{
-    border: solid black .02rem;
+    border: solid black 1px;
   }
 
   .cross-out{

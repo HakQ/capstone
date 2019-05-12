@@ -51,13 +51,13 @@ export const storeProducts = [
   },
   {
     Product_id: 3,
-    Title: "Item 3",
+    Title: "Nicky Snap Force XII GreenLight Zoom",
     IMG: "img/img3.jpeg",
     Price: 16,
     Competitor:100,
     Discount:0.7821,
     Size: "L",
-    Description:"dummy",   
+    Description:"This is a very good shoes that is green and very comfortable which you should pay some money for because it is a really good shoes",   
     expireAt: new Date('May 28, 2019 18:28:00'),
 
     "Seller_id": "someseller",

@@ -455,7 +455,6 @@ class ProductProvider extends React.Component {
       ]
     }
 
-
     let url='https://jld0cpfhvi.execute-api.us-east-1.amazonaws.com/default/shipppp-dev-hello';
       await fetch(url, {
         method: 'POST', // or 'PUT'
