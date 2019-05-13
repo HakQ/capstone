@@ -22,6 +22,10 @@ export const storeProducts = [
     "UPC": "1000000",
     "Seller_id": "someseller",
 
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
+
   },
   {
     Product_id: 2,
@@ -41,6 +45,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 3,
@@ -60,6 +68,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 4,
@@ -79,6 +91,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 5,
@@ -99,6 +115,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 6,
@@ -118,6 +138,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 7,
@@ -137,6 +161,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 8,
@@ -156,6 +184,10 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001"
   },
   {
     Product_id: 9,
@@ -175,7 +207,16 @@ export const storeProducts = [
     "Category": "clothes",
     "UPC": "1000000",
     "Seller_id": "someseller",
+
+    "SoldOut": false,
+    "Quantity": 3,
+    "Zip_Code": "10001",
+    _id: "292e32cb-1e53-49a3-9176-382e82fad4c5"
+
   },
 
 ];
+
+
+
 

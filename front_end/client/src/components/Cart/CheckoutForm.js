@@ -44,6 +44,7 @@ class CheckoutForm extends Component {
 
   render(){
     return(
+      <ProductConsumer>{value=>{return(
       <AddressFormWrapper className="container mt-5">
         <div className="text-center">
           <Link to="/">
@@ -137,7 +138,7 @@ class CheckoutForm extends Component {
           </div>
         </div>
       </AddressFormWrapper>
-
+      )}}</ProductConsumer>
     )
   }
      

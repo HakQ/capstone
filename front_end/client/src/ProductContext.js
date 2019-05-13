@@ -96,6 +96,7 @@ class ProductProvider extends React.Component {
     else{
       try {
         await Auth.signIn(em, pw);//will throw error if unsuccessful login
+
         this.setState({
           logged_in: !this.state.logged_in,
           email: em,
@@ -318,7 +319,7 @@ class ProductProvider extends React.Component {
       data.operation = "ADD";
       data.cart_id = this.state.email;
       data.QuantityDemand = "1";
-      data.Quantity ="1";
+      data.PID = addCartProduct._id;
 
       console.log("GOING TO SERVER: ", data);
 
@@ -361,10 +362,11 @@ class ProductProvider extends React.Component {
 
     //remove Stuff to cart if signed in
     if(this.state.logged_in){
+      console.log(removeCartProduct._id);
       var data = {
           "operation": "REMOVE",
           "cart_id": this.state.email,
-          "Product_id":removeCartProduct.Product_id
+          "PID":removeCartProduct._id
       }
       
 
@@ -422,7 +424,7 @@ class ProductProvider extends React.Component {
   }
 
   updateFromSearch= async (query)=>{
-    console.log("SEARCH CLICKED"); //debug delete
+    
     let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
 
     await fetch(url, {
@@ -438,9 +440,29 @@ class ProductProvider extends React.Component {
         }
         return res.json()
       })
-      .then(res =>{ 
-        console.log(res.response.docs);//debug remove
-        this.setState({product:res.response.docs})
+      .then(res =>{
+        console.log(res.response.docs);
+
+        if(this.state.logged_in){ 
+          let currentCart = this.state.cartProduct;
+          let userProduct = res.response.docs;
+
+          for( let i=0; i<userProduct.length; i++){
+            for( let j=0; j<currentCart.length; j++){
+                if(currentCart[i].Product_id == userProduct[j].Product_id){
+                  userProduct.splice(i, 1);
+                }
+              }
+          }
+
+          this.setState({
+            product: userProduct
+          });
+        }
+        else{
+          this.setState({product:res.response.docs})
+        }
+
       })
       .catch(error => console.error('Error:', error));
   }
@@ -561,4 +583,6 @@ class ProductProvider extends React.Component {
 const ProductConsumer = ProductContext.Consumer;
 
 export {ProductConsumer, ProductProvider};
+
+
 
