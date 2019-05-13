@@ -80,7 +80,7 @@ class About extends React.Component {
                   </div>
                   <div className="d-flex d-flex-placement">
                     <div class="card m-2">
-                      <img src="img/blank_profile.png" alt="asian guy slurp burger" className="card-img-top"/>
+                      <img src="img/francis.jpg" alt="asian guy slurp burger" className="card-img-top"/>
                       <div class="card-body">
                         <p class="card-text">Francis</p>
                       </div>

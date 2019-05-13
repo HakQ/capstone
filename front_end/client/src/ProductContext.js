@@ -421,41 +421,86 @@ class ProductProvider extends React.Component {
     })
   }
 
-  updateFromSearch=(query)=>{
-    console.log("Apache Solar: " + query);
+  updateFromSearch= async (query)=>{
+    let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:<"+query;
+    await fetch(url, {
+        method: 'GET', // or 'PUT'
+        mode:'cors',
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res=>{
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json()
+      })
+      .then(res =>{ 
+        this.setState({product:res.response.docs})
+      })
+      .catch(error => console.error('Error:', error));
+
+
   }
 
   calculateShipRate = async (zipcode)=>{
-    var data = {
-      "addressFrom": [
-        {
-          "address": {
-            "zip": "43001",
-            "country": "US"
-          }
-        },
-      ],
+  var data = {
+ "addressFrom": [
+   {
+     "address": {
+       "zip": "43001",
+       "country": "US"
+     },
+     "parcel": {
+       "length": "5",
+       "width": "5",
+       "height": "5",
+       "distance_unit": "in",
+       "weight": "2",
+       "mass_unit": "lb"
+     }
+   },
+   {
+     "address": {
+       "zip": "10001",
+       "country": "US"
+     },
+     "parcel": {
+       "length": "15",
+       "width": "9",
+       "height": "3",
+       "distance_unit": "in",
+       "weight": "2",
+       "mass_unit": "lb"
+     }
 
-      "addressTo": {
-        "zip": "10465",
-        "country": "US"
-      },
+   },
+   {
+     "address": {
+       "zip": "85001",
+       "country": "US"
+     },
+     "parcel": {
+       "length": "35",
+       "width": "15",
+       "height": "25",
+       "distance_unit": "in",
+       "weight": "2",
+       "mass_unit": "lb"
+     }
+   }
+ ],
 
-      "parcels": [
-        {
-          "parcel": {
-            "length": "35",
-            "width": "15",
-            "height": "25",
-            "distance_unit": "in",
-            "weight": "2",
-            "mass_unit": "lb"
-          }
-        }
-      ]
-    }
+ "addressTo":
+ {
+   "zip": "10465",
+   "country": "US"
+ }
+};
 
-    let url='https://jld0cpfhvi.execute-api.us-east-1.amazonaws.com/default/shipppp-dev-hello';
+    let url ='https://1ajvzgfkt6.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
+    // let url='https://jld0cpfhvi.execute-api.us-east-1.amazonaws.com/default/shipppp-dev-hello';
       await fetch(url, {
         method: 'POST', // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!

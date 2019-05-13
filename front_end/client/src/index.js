@@ -34,3 +34,6 @@ Amplify.configure({
 //This is just a wrapper to get the main App components
 ReactDOM.render(<App />, document.getElementById('root'));
 
+
+
+

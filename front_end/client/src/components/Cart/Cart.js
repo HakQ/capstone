@@ -5,6 +5,8 @@ import Navbar from "../Navbar.js";
 import Footer from "../Footer.js";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import { PayPalButton } from "react-paypal-button-v2";
+
 
 
 
@@ -190,3 +192,36 @@ const CartWrapper = styled.div
 `
 
 export default Cart;
+
+
+
+
+// <PayPalButton
+//   amount="0.01"
+//   onSuccess={(details, data) => {
+//     console.log(details);
+//     console.log(data);
+
+//     // OPTIONAL: Call your server to save the transaction
+//     return fetch("/paypal-transaction-complete", {
+//       method: "post",
+//       body: JSON.stringify({
+//         orderId: data.orderID
+//       })
+//       .then(res=>{
+//         res.json();
+//       })
+//       .then(res=>{
+//         console.log(res);
+//       })
+//       .catch(err=>{
+//         console.log(err);
+//       })
+
+//     });
+
+//   }}
+//   options={{
+//     clientId: "AW3ZFvNBLp0K92uNCALK2NTBYeaPplZgFfZpsMoQaX-ftgiia2US3ZaXicpm064A2z1p5tJezt8fD7l6"
+//   }}
+// />

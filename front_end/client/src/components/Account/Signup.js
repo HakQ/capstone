@@ -59,15 +59,15 @@ class Signup extends Component {
                       value.handleSignup(this.state)}}>
                       <div className="form-group">
                         <label htmlFor="InputFirstName">First Name</label>
-                        <input type="first_name" className="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="First" onChange = {this.change_first} />
+                        <input type="text" className="form-control" id="InputFirstName" aria-describedby="emailHelp" placeholder="First" onChange = {this.change_first} />
                       </div>
                       <div className="form-group">
                         <label htmlFor="InputLastName">Last Name</label>
-                        <input type="last_name" className="form-control" id="InputLastName" placeholder="Last" onChange = {this.change_last} />
+                        <input type="text" className="form-control" id="InputLastName" placeholder="Last" onChange = {this.change_last} />
                       </div>
                       <div className="form-group">
                         <label htmlFor="InputUsername">Username</label>
-                        <input type="username" className="form-control" id="InputUsername" placeholder="Username" onChange = {this.change_username} />
+                        <input type="text" className="form-control" id="InputUsername" placeholder="Username" onChange = {this.change_username} />
                       </div>
                       <div className="form-group">
                         <label htmlFor="InputEmail">Email</label>
