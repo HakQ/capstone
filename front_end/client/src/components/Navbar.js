@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import styled from "styled-components";
 import Account from "./Account/Account.js";
 import{ProductConsumer} from "../ProductContext.js";
@@ -9,6 +9,7 @@ class Navbar extends Component {
     super(props);
     this.state = {
       query: "",
+      redirectBrowse:false
     }
   }
 
@@ -16,40 +17,48 @@ class Navbar extends Component {
     this.setState({query: event.target.value});
   }
 
+  changeRedirectTrue = (event)=>{
+    this.setState({redirectBrowse: true});
+  }
+
+  changeRedirectFalse = (event)=>{
+    this.setState({redirectBrowse: false});
+  }
+
   render() {
     return (
+<ProductConsumer>{value=>{return(
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={this.changeRedirectFalse}>
           <img src="img/SnapLogo.png" alt="Store Logo" className="logo-image"/>
         </Link>
 
-        {/*<!--This is Search Bar-->*/}
-        <ProductConsumer>{value=>{return(
-          <form className="input-group searchBar" onSubmit={(event)=>{
-            event.preventDefault();
-            value.updateFromSearch(this.state.query);
-          }}>
-            <input className="form-control" type="text" placeholder="Search..." aria-label="Search" onChange={this.change_query} />
-            <div className="input-group-append">
-              <button type="submit" className="input-group-text lighten-3 btn-search">
-                <i className="fas fa-search text-grey" aria-hidden="true"></i>
-              </button>
-            </div>
-          </form>
-        )}}</ProductConsumer>
+        {/*This is search-bar*/}
+        <form className="input-group searchBar" onSubmit={this.changeRedirectTrue}>
+          <input className="form-control" type="text" placeholder="Search..." aria-label="Search" onChange={this.change_query} />
+          <div className="input-group-append">
+            <button type="submit" className="input-group-text lighten-3 btn-search" onClick={(event)=>{
+              value.updateFromSearch(this.state.query);
+            }}>
+              <i className="fas fa-search text-grey" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
 
         <Link to="/Browse" className="nav-link browse">
-          <button className="btn btn-secondary btn-sm">
+          <button className="btn btn-secondary btn-sm" onClick={(event)=>{
+          value.updateFromSearch("*");
+        }}>
             Browse
           </button>
         </Link>
 
         <div className="account">
-          <Account/>
+          <Account onClick={this.changeRedirectFalse}/>
         </div>
 
         {/*<!--This is cart button-->*/}
-        <Link to="cart" className="goCart">
+        <Link to="cart" className="goCart" onClick={this.changeRedirectFalse}>
           <ButtonContainer>
             {/*from font awesome*/}
             <span className="">
@@ -58,8 +67,17 @@ class Navbar extends Component {
             </span>
           </ButtonContainer>
         </Link>
-          
+
+        {
+          this.state.redirectBrowse?
+          <Redirect to="/browse" />:
+          <span></span>
+        }
+
+
       </NavWrapper> 
+)}}</ProductConsumer>
+
     );
   }
 }

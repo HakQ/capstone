@@ -422,9 +422,11 @@ class ProductProvider extends React.Component {
   }
 
   updateFromSearch= async (query)=>{
-    let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:<"+query;
+    console.log("SEARCH CLICKED"); //debug delete
+    let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
+
     await fetch(url, {
-        method: 'GET', // or 'PUT'
+        method: 'GET', 
         mode:'cors',
         headers:{
           'Content-Type': 'application/json'
@@ -437,11 +439,10 @@ class ProductProvider extends React.Component {
         return res.json()
       })
       .then(res =>{ 
+        console.log(res.response.docs);//debug remove
         this.setState({product:res.response.docs})
       })
       .catch(error => console.error('Error:', error));
-
-
   }
 
   calculateShipRate = async (zipcode)=>{
