@@ -23,7 +23,7 @@ class Product extends React.Component {
 
 
   render() {
-    const {Product_id,Title,IMG,Price, Discount, Competitor, inCart, time, Size} = this.props.product;
+    const {_id,Title,IMG,Price, Discount, Competitor, inCart, time, Size} = this.props.product;
     let discount_percent = Math.ceil(100*Discount);
     let name;
 
@@ -46,7 +46,7 @@ class Product extends React.Component {
               <h4><strong>{name}</strong></h4>
             </div>
             <div className="img-container">
-              <Link to="/detail" onClick={()=>{value.setView(Product_id)}} className="mx-auto">
+              <Link to="/detail" onClick={()=>{value.setView(_id)}} className="mx-auto">
                 <img src={IMG} className="card-img-top mx-auto d-block" alt="image of product"/>
               </Link>
             </div>
@@ -62,13 +62,13 @@ class Product extends React.Component {
             </div>
             <div className="timer mx-auto">
               <span> Ends in </span>
-              <Timer expire={expireAt} id={Product_id}/>
+              <Timer expire={expireAt} id={_id}/>
             </div>
             <div className="card-footer justify-content-center">
               <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
               <button className="w-60 btn-addcart mx-auto" style={{display:this.state.add_cart_display}} onClick={()=>{
                 this.changeDisplay();
-                value.addToCart(Product_id);
+                value.addToCart(_id);
               }}>
                 Claim to Cart
               </button>

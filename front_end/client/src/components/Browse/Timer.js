@@ -2,10 +2,6 @@
 Timer Component: given a date as a prop, will create a timer that 
 start a count down until that date
 *******************************************************************/
-
-
-
-
 import React from 'react';
 import {ProductConsumer} from "../../ProductContext.js";
 

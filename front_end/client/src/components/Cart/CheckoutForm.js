@@ -5,6 +5,7 @@ import {ProductConsumer} from "../../ProductContext.js";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
+
 class CheckoutForm extends Component {
   
   constructor(props) {
@@ -16,6 +17,7 @@ class CheckoutForm extends Component {
       city:"",
       state:"",
       zipcode:"",
+      redirect_paypal:false
     }
   }
 
@@ -42,9 +44,25 @@ class CheckoutForm extends Component {
     console.log("submit");
   }
 
+  redirect_paypal=()=>{
+    this.setState({redirect_paypal:true});
+  }
+
+  submitForm (e) {
+    e.preventDefault()
+    this.props.history.push('/payment');
+  }
+
+
   render(){
     return(
-      <ProductConsumer>{value=>{return(
+      <ProductConsumer>{value=>{
+        if(value.goPayment){
+            return <Redirect to='/payment'/>
+        }
+        else{
+
+        return(
       <AddressFormWrapper className="container mt-5">
         <div className="text-center">
           <Link to="/">
@@ -53,7 +71,7 @@ class CheckoutForm extends Component {
         </div>
         <div className="row justify-content-center p-5" >
           <div className="col-12 col-lg-6">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.submitForm.bind(this)}>
               <div className="form-group">
                 <label htmlFor="InputFirstName">First Name</label>
                 <input type="text" className="form-control" id="InputFirstName" aria-describedby="cityHelp" placeholder="First" onChange = {this.change_first} />
@@ -130,15 +148,27 @@ class CheckoutForm extends Component {
               <div className="form-group">
                 <label htmlFor="InputZipcode">Zip Code</label>
                 <input type="text" className="form-control" id="InputZipcode" placeholder="zip code" onChange = {this.change_zipcode} />
-              </div>
+              </div>            
               <div className="text-center">
-                <button type="submit" className="btn btn-primary amazon-yellow">continue to payment</button>
+                  <button type="submit" className="btn btn-primary amazon-yellow" onClick={(event)=>{
+                    event.preventDefault();
+                    value.handleSubmitAddress(this.state);
+                  }}>
+                    continue to payment
+                  </button>
               </div>
             </form>
           </div>
         </div>
+
+        {  
+          value.goPayment?
+          <Redirect to="/payment" />:
+          <span></span>
+        }
+        
       </AddressFormWrapper>
-      )}}</ProductConsumer>
+      )}}}</ProductConsumer>
     )
   }
      
@@ -162,4 +192,3 @@ export default CheckoutForm;
 
 
 
-              

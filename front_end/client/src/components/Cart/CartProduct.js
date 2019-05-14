@@ -20,7 +20,7 @@ class CartProduct extends React.Component {
   }
 
   render() {
-    const {Product_id,Description,Title,IMG,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
+    const {_id,Description,Title,IMG,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
     let discount_percent = Math.ceil(100*Discount);
 
     return (
@@ -35,7 +35,7 @@ class CartProduct extends React.Component {
               <p>Size: {Size} </p>
             </div>
             <div className="col-2">
-              <Timer expire={expireAt} id={Product_id}/>
+              <Timer expire={expireAt} id={_id}/>
             </div>
             <div className="col-1">
               <select name="Qty" onChange={this.change_qty}>
@@ -55,7 +55,7 @@ class CartProduct extends React.Component {
               <p>${this.state.price}</p>
             </div>
             <div className="col-2">
-              <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(Product_id)}}>Cancel</button>
+              <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(_id)}}>Cancel</button>
             </div>
           </div>
           <hr/>

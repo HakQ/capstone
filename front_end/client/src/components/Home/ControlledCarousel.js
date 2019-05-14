@@ -86,8 +86,29 @@ class ControlledCarousel extends React.Component {
 
             <Carousel.Caption>
               <div className="text-center backgroundBehind">
-                <h2 className="display-4">Shop in style</h2>
-                <p className="lead">pay at its lowest</p>
+                <h2 className="display-4">Make money through our app</h2>
+                <p className="lead">Become a reseller and start making cash now!</p>
+              </div>
+              <div className="text-center">
+                <Link to="/browse">
+                  <button className="btn btn-primary">
+                    <span>Shop Now</span>
+                  </button>
+                </Link>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="img/background4.jpg"
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+              <div className="text-center backgroundBehind">
+                <h2 className="display-4">New Fit, New You</h2>
+                <p className="lead">Pick out your fresh fit now!</p>
               </div>
               <div className="text-center">
                 <Link to="/browse">

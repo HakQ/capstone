@@ -27,7 +27,7 @@ class Detail extends React.Component {
   render() {
     return (
       <ProductConsumer>{value=>{
-        const {Product_id,Title,IMG,Price,inCart, Description, time, expireAt, Competitor,Discount, Size} = value.viewProduct;
+        const {_id,Title,IMG,Price,inCart, Description, time, expireAt, Competitor,Discount, Size} = value.viewProduct;
         let discount_percent = Math.ceil(100*Discount);
 
         return(
@@ -55,13 +55,13 @@ class Detail extends React.Component {
                       <p> {Description} </p>
                       <div className="timer mx-auto text-center margin-4rem">
                         <span> Ends in </span>
-                        <Timer expire={expireAt} id={Product_id}/>
+                        <Timer expire={expireAt} id={_id}/>
                       </div>
                       <div className="addcart-btn mx-auto d-flex">
                         <p className="text-success" style={{display:this.state.mess_display}}><span>&#10003;</span> successfully added to cart</p>
                         <button className="btn btn-primary rounded-pill addCart pt-0 mt-0" style={{display:this.state.add_cart_display}} onClick={()=>{
                           this.changeDisplay();
-                          value.addToCart(Product_id);
+                          value.addToCart(_id);
                         }}>
                           <i className="fas fa-cart-plus"/>
                           <span>Claim To Cart</span>

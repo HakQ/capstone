@@ -25,32 +25,23 @@ class ProductProvider extends React.Component {
       cartProduct:[],
       viewProduct:{},
       shippingCost:0,
+      query:"*",
+      goPayment:false
 
     }
-  }
-
-  componentWillMount(){
-    try{
-      if(storeProducts[0].code==400){
-        console.log("error");
-      }
-      else{
-        this.setState({product:storeProducts})
-      }
-    }
-    catch(e){
-      console.log(e);
-    }
-
   }
 
   componentDidMount() {
+    this.interval = setInterval(() => {
+     this.updateFromSearch(this.state.query);
+    }, 100000);
 
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
 
   /********************User Info Methods**********************/
   handleLogin = async (em, pw, cpw)=>{
@@ -132,7 +123,7 @@ class ProductProvider extends React.Component {
 
             for( let i=0; i<currentCart.length; i++){
               for( let j=0; j<userCart.length; j++){
-                  if(currentCart[i].Product_id == userCart[j].Product_id){
+                  if(currentCart[i]._id == userCart[j]._id){
                     currentCart.splice(i, 1);
                   }
                 }
@@ -301,16 +292,16 @@ class ProductProvider extends React.Component {
 
   /*******************Product Info methods**********************/
   //functions for children to interact with the context api
-  setView=(Product_id)=>{
-    const tempProduct = this.state.product.find(item=>item.Product_id===Product_id);
+  setView=(_id)=>{
+    const tempProduct = this.state.product.find(item=>item._id===_id);
     this.setState({
       viewProduct: tempProduct,
     })
   }
 
   /***************************addToCart()***************************************/  
-  addToCart= async (Product_id)=>{
-    const addCartProduct = this.state.product.find(item=>item.Product_id===Product_id);
+  addToCart= async (_id)=>{
+    const addCartProduct = this.state.product.find(item=>item._id===_id);
 
     //Adding Stuff to cart if signed in
     if(this.state.logged_in){
@@ -344,7 +335,7 @@ class ProductProvider extends React.Component {
 
 
     const newProducts = this.state.product.filter((item) =>{ 
-      return item.Product_id !== addCartProduct.Product_id;  
+      return item._id !== addCartProduct._id;  
     });
     let currentCart = this.state.cartProduct;
     currentCart.push(addCartProduct)
@@ -356,13 +347,12 @@ class ProductProvider extends React.Component {
   }
 
   /***************************CancelFromCart()***************************************/
-  cancelFromCart= async(Product_id)=>{
+  cancelFromCart= async(_id)=>{
     //find the item from cart that to be removed
-    const removeCartProduct = this.state.cartProduct.find(item=>item.Product_id===Product_id);
+    const removeCartProduct = this.state.cartProduct.find(item=>item._id===_id);
 
     //remove Stuff to cart if signed in
     if(this.state.logged_in){
-      console.log(removeCartProduct._id);
       var data = {
           "operation": "REMOVE",
           "cart_id": this.state.email,
@@ -393,7 +383,7 @@ class ProductProvider extends React.Component {
 
     //make a new cart which the selected item to be remove is not there
     const newProducts = this.state.cartProduct.filter((item) =>{ 
-      return item.Product_id !== removeCartProduct.Product_id;  
+      return item._id !== removeCartProduct._id;  
     });
 
 
@@ -407,13 +397,13 @@ class ProductProvider extends React.Component {
     })
   }
 
-  expireHandler=(Product_id)=>{
+  expireHandler=(_id)=>{
     const newProducts = this.state.product.filter((item) =>{ 
-      return item.Product_id !== Product_id;  
+      return item._id !== _id;  
     });
 
     const newCartProducts = this.state.cartProduct.filter((item) =>{ 
-      return item.Product_id !== Product_id;  
+      return item._id !== _id;  
     });
 
 
@@ -441,31 +431,102 @@ class ProductProvider extends React.Component {
         return res.json()
       })
       .then(res =>{
-        console.log(res.response.docs);
+        let databaseProducts = res.response.docs.filter((item) =>{ 
+          return item.soldOut !== true;  
+        });
 
-        if(this.state.logged_in){ 
-          let currentCart = this.state.cartProduct;
-          let userProduct = res.response.docs;
 
-          for( let i=0; i<userProduct.length; i++){
-            for( let j=0; j<currentCart.length; j++){
-                if(currentCart[i].Product_id == userProduct[j].Product_id){
-                  userProduct.splice(i, 1);
-                }
+        let currentCart = this.state.cartProduct;
+        let userProduct = res.response.docs;
+
+        for( let i=0; i<userProduct.length; i++){
+          for( let j=0; j<currentCart.length; j++){
+              if(currentCart[i]._id == userProduct[j]._id){
+                userProduct.splice(i, 1);
               }
-          }
+            }
+        }
 
-          this.setState({
-            product: userProduct
-          });
-        }
-        else{
-          this.setState({product:res.response.docs})
-        }
+        this.setState({
+          product: userProduct,
+          query: query
+        });
+      
 
       })
       .catch(error => console.error('Error:', error));
   }
+
+  handleSubmitAddress = async(address)=>{
+
+    var dataAddress = [{"email":"francis.irizarry52@myhunter.cuny.edu"}]
+    
+    //call get-rate-id
+    var url = 'https://nbcde382k3.execute-api.us-east-1.amazonaws.com/dev/get-rate-id';
+    var data = 
+    {
+      "emails": dataAddress,
+      "addressTo": 
+      {
+
+        "name": "QIUQUN WANG",
+        "street1": address.address,
+        "city": address.city,
+        "state": address.state,
+        "zip": address.zipcode,
+        "country": "US",
+        "email": this.state.email
+      },
+      Title:"Nike Hoodie"
+    };
+
+    fetch(url, {
+      method: 'POST', 
+      body: JSON.stringify(data),
+      mode:'cors',
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+
+      let ArrayResponse=[];
+      let totalCost=0;
+
+      for(let i=0; i < response.length; i++){
+        let res_JSON = JSON.parse(response[0].body);
+        totalCost = totalCost + res_JSON.cost;
+        ArrayResponse.push(res_JSON);
+      }
+
+      //call get label
+      var newurl = 'https://j55mjh7ksh.execute-api.us-east-1.amazonaws.com/dev/get-labels';
+      var newdata = {
+        "customer_email": this.state.email,
+        "rates": ArrayResponse
+      };
+      fetch(newurl, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(newdata), // data can be `string` or {object}!
+        mode:'cors',headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+
+    })
+    .catch(error => console.error('Error:', error));
+   
+
+
+    this.setState({goPayment:true})
+
+         
+  }
+
 
   calculateShipRate = async (zipcode)=>{
   var data = {
@@ -570,6 +631,8 @@ class ProductProvider extends React.Component {
             updateFromSearch: this.updateFromSearch,
             calculateShipRate: this.calculateShipRate,
             shippingCost: this.shippingCost,
+            handleSubmitAddress: this.handleSubmitAddress,
+            goPayment:this.state.goPayment
           }
         }
       >

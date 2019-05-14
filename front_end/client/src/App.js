@@ -26,10 +26,9 @@ import Sell from "./components/Sell/Sell.js";
 import Cart from "./components/Cart/Cart.js";
 import CheckoutForm from "./components/Cart/CheckoutForm.js";
 import Detail from "./components/Browse/Detail.js";
-
 import {ProductProvider} from "./ProductContext.js";
-
 import ScrollToTop from "./Utility/ScrollToTop.js";
+import PaypalBtn from "./components/Cart/PaypalBtn.js";
 
 
 //Sets up the routes for the project
@@ -60,6 +59,7 @@ class App extends Component {
                 <Route path="/cart" component={Cart}/>
                 <Route path="/detail" component={Detail}/>
                 <Route path="/checkoutform" component={CheckoutForm}/>
+                <Route path="/payment" component={PaypalBtn}/>
                 <Route component={Default} />
               </Switch>
             </React.Fragment>

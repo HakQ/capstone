@@ -3,6 +3,12 @@ import {Link, Redirect} from "react-router-dom";
 import styled from "styled-components";
 import Account from "./Account/Account.js";
 import{ProductConsumer} from "../ProductContext.js";
+import {withRouter} from 'react-router-dom';
+
+
+
+
+
 
 class Navbar extends Component {
   constructor(props) {
@@ -27,17 +33,22 @@ class Navbar extends Component {
 
   render() {
     return (
-<ProductConsumer>{value=>{return(
+<ProductConsumer>{value=>{
+  return(
       <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
         <Link to="/" className="logo" onClick={this.changeRedirectFalse}>
           <img src="img/SnapLogo.png" alt="Store Logo" className="logo-image"/>
         </Link>
 
         {/*This is search-bar*/}
-        <form className="input-group searchBar" onSubmit={this.changeRedirectTrue}>
+        <form className="input-group searchBar" onSubmit={ (event)=>{
+              event.preventDefault();
+              this.props.history.push('/signupconfirm');            
+        }}>
           <input className="form-control" type="text" placeholder="Search..." aria-label="Search" onChange={this.change_query} />
           <div className="input-group-append">
             <button type="submit" className="input-group-text lighten-3 btn-search" onClick={(event)=>{
+              event.preventDefault();
               value.updateFromSearch(this.state.query);
             }}>
               <i className="fas fa-search text-grey" aria-hidden="true"></i>
@@ -47,7 +58,7 @@ class Navbar extends Component {
 
         <Link to="/Browse" className="nav-link browse">
           <button className="btn btn-secondary btn-sm" onClick={(event)=>{
-          value.updateFromSearch("*");
+            value.updateFromSearch("*");
         }}>
             Browse
           </button>
@@ -67,14 +78,6 @@ class Navbar extends Component {
             </span>
           </ButtonContainer>
         </Link>
-
-        {
-          this.state.redirectBrowse?
-          <Redirect to="/browse" />:
-          <span></span>
-        }
-
-
       </NavWrapper> 
 )}}</ProductConsumer>
 
