@@ -32,14 +32,14 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
-    /*this.interval = setInterval(() => {
+    this.interval = setInterval(() => {
      this.updateFromSearch(this.state.query);
-    }, 1000);*/
+    }, 1000);
 
   }
 
   componentWillUnmount() {
-    /*clearInterval(this.interval);*/
+    clearInterval(this.interval);
   }
 
 
@@ -436,7 +436,7 @@ class ProductProvider extends React.Component {
 
   updateFromSearch= async (query)=>{
     
-    /*let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
+    let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
 
     await fetch(url, {
         method: 'GET', 
@@ -475,12 +475,9 @@ class ProductProvider extends React.Component {
       
 
       })
-      .catch(error => console.error('Error:', error));*/
+      .catch(error => console.error('Error:', error));
 
 
-      this.setState({
-        product:storeProducts
-      })
 
 
   }
