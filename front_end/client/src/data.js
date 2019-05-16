@@ -1,7 +1,7 @@
 
 
 
-export const storeProducts = [
+export  const storeProducts = [
   {
 
     Product_id: 1,
@@ -12,7 +12,7 @@ export const storeProducts = [
     Discount:0.7821,
     Size: "L",
     Description:"dummy",
-    expireAt: new Date('May 7, 2019 18:36:00'),
+    expireAt: new Date('May 19, 2019 18:36:00'),
 
     "Seller_id": "someseller",
     "Color": "blue",
@@ -20,7 +20,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -37,14 +37,14 @@ export const storeProducts = [
     Size: "L",
     Description:"dummy",
    
-    expireAt: new Date('May 7, 2019 18:28:00'),
+    expireAt: new Date('May 19, 2019 18:28:00'),
     "Seller_id": "someseller",
     "Color": "blue",
     "Brand": "nike",
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -67,7 +67,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -90,7 +90,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -114,7 +114,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -137,7 +137,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -160,7 +160,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -183,7 +183,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,
@@ -206,7 +206,7 @@ export const storeProducts = [
     "Gender": "men",
     "Category": "clothes",
     "UPC": "1000000",
-    "Seller_id": "someseller",
+    "Seller_id": "francis.irizarry52@myhunter.cuny.edu",
 
     "SoldOut": false,
     "Quantity": 3,

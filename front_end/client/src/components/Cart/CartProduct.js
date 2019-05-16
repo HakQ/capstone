@@ -14,14 +14,19 @@ class CartProduct extends React.Component {
     }
   }
 
-  change_qty=(e)=>{
-    let newPrice = this.state.initial_price * e.target.value;
-    this.setState({qty:e.target.value, price:newPrice});
-  }
+  // change_qty=(e)=>{
+  //   let newPrice = this.state.initial_price * e.target.value;
+  //   this.setState({qty:e.target.value, price:newPrice});
+  // }
 
   render() {
-    const {_id,Description,Title,IMG,Price, Discount, Competitor, inCart, expireAt,Size} = this.props.product;
+    const {_id,Description,Title,IMG,Price, Discount, Competitor, inCart, expireAt,Size, Quantity, shopPrice} = this.props.product;
     let discount_percent = Math.ceil(100*Discount);
+    let items =[];
+
+    for(let i=1; i <= Quantity; i++){
+      items.push(i);
+    }
 
     return (
       <ProductConsumer>{(value)=>{return(
@@ -38,21 +43,16 @@ class CartProduct extends React.Component {
               <Timer expire={expireAt} id={_id}/>
             </div>
             <div className="col-1">
-              <select name="Qty" onChange={this.change_qty}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+              <select name="Qty" onChange={(event)=>{
+                value.upDateQuantityDemanded(_id, event.target.value);
+              }}>
+                {items.map((item) =>
+                  <option key={item.toString()} value={item}> {item} </option>
+                )}
               </select>
             </div>
             <div className="col-2">
-              <p>${this.state.price}</p>
+              <p>${shopPrice}</p>
             </div>
             <div className="col-2">
               <button type="button" className="btn btn-danger" onClick={()=>{value.cancelFromCart(_id)}}>Cancel</button>

@@ -74,11 +74,11 @@ class CheckoutForm extends Component {
             <form onSubmit={this.submitForm.bind(this)}>
               <div className="form-group">
                 <label htmlFor="InputFirstName">First Name</label>
-                <input type="text" className="form-control" id="InputFirstName" aria-describedby="cityHelp" placeholder="First" onChange = {this.change_first} />
+                <input type="text" className="form-control" id="InputFirstName" aria-describedby="cityHelp" placeholder="First" onChange = {this.change_firsName} />
               </div>
               <div className="form-group">
                 <label htmlFor="InputLastName">Last Name</label>
-                <input type="text" className="form-control" id="InputLastName" placeholder="Last" onChange = {this.change_last} />
+                <input type="text" className="form-control" id="InputLastName" placeholder="Last" onChange = {this.change_lastName} />
               </div>
               <div className="form-group">
                 <label htmlFor="Inputaddress">Address</label>

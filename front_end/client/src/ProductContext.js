@@ -24,22 +24,22 @@ class ProductProvider extends React.Component {
       product:[],
       cartProduct:[],
       viewProduct:{},
-      shippingCost:0,
+      // shippingCost:0,
       query:"*",
-      goPayment:false
-
+      goPayment:false,
+      shipRateCost:""
     }
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => {
+    /*this.interval = setInterval(() => {
      this.updateFromSearch(this.state.query);
-    }, 100000);
+    }, 1000);*/
 
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    /*clearInterval(this.interval);*/
   }
 
 
@@ -291,7 +291,23 @@ class ProductProvider extends React.Component {
 
 
   /*******************Product Info methods**********************/
-  //functions for children to interact with the context api
+  upDateQuantityDemanded=(_id, changeQuantity)=>{
+    const updateProduct = this.state.cartProduct.find(item=>item._id===_id);
+    updateProduct.QuantityDemand = changeQuantity;
+    updateProduct.shopPrice = updateProduct.Price * changeQuantity;
+
+    const newProducts = this.state.cartProduct.filter((item) =>{ 
+      return item._id !== updateProduct._id;  
+    });
+    
+    newProducts.push(updateProduct)
+
+    this.setState({
+      cartProduct: newProducts ,
+    })
+  }
+
+
   setView=(_id)=>{
     const tempProduct = this.state.product.find(item=>item._id===_id);
     this.setState({
@@ -302,6 +318,9 @@ class ProductProvider extends React.Component {
   /***************************addToCart()***************************************/  
   addToCart= async (_id)=>{
     const addCartProduct = this.state.product.find(item=>item._id===_id);
+    addCartProduct.QuantityDemand = 1;
+    addCartProduct.shopPrice = addCartProduct.Price;
+
 
     //Adding Stuff to cart if signed in
     if(this.state.logged_in){
@@ -337,6 +356,8 @@ class ProductProvider extends React.Component {
     const newProducts = this.state.product.filter((item) =>{ 
       return item._id !== addCartProduct._id;  
     });
+
+
     let currentCart = this.state.cartProduct;
     currentCart.push(addCartProduct)
 
@@ -415,7 +436,7 @@ class ProductProvider extends React.Component {
 
   updateFromSearch= async (query)=>{
     
-    let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
+    /*let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
 
     await fetch(url, {
         method: 'GET', 
@@ -454,13 +475,28 @@ class ProductProvider extends React.Component {
       
 
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => console.error('Error:', error));*/
+
+
+      this.setState({
+        product:storeProducts
+      })
+
+
   }
 
   handleSubmitAddress = async(address)=>{
 
-    var dataAddress = [{"email":"francis.irizarry52@myhunter.cuny.edu"}]
-    
+    //var dataAddress = [{"email":"francis.irizarry52@myhunter.cuny.edu"}]
+    var dataAddress = [];
+
+    let myCart = this.state.cartProduct;
+
+    for(let i=0; i < myCart.length; i++){
+      dataAddress.push({email:myCart[i].Seller_id});
+    }
+
+
     //call get-rate-id
     var url = 'https://nbcde382k3.execute-api.us-east-1.amazonaws.com/dev/get-rate-id';
     var data = 
@@ -469,7 +505,7 @@ class ProductProvider extends React.Component {
       "addressTo": 
       {
 
-        "name": "QIUQUN WANG",
+        "name": address.firstName+" "+address.lastName,
         "street1": address.address,
         "city": address.city,
         "state": address.state,
@@ -490,7 +526,6 @@ class ProductProvider extends React.Component {
     })
     .then(res => res.json())
     .then(response => {
-
       let ArrayResponse=[];
       let totalCost=0;
 
@@ -499,6 +534,9 @@ class ProductProvider extends React.Component {
         totalCost = totalCost + res_JSON.cost;
         ArrayResponse.push(res_JSON);
       }
+
+      this.setState({shipRateCost: totalCost})
+
 
       //call get label
       var newurl = 'https://j55mjh7ksh.execute-api.us-east-1.amazonaws.com/dev/get-labels';
@@ -528,88 +566,12 @@ class ProductProvider extends React.Component {
   }
 
 
-  calculateShipRate = async (zipcode)=>{
-  var data = {
- "addressFrom": [
-   {
-     "address": {
-       "zip": "43001",
-       "country": "US"
-     },
-     "parcel": {
-       "length": "5",
-       "width": "5",
-       "height": "5",
-       "distance_unit": "in",
-       "weight": "2",
-       "mass_unit": "lb"
-     }
-   },
-   {
-     "address": {
-       "zip": "10001",
-       "country": "US"
-     },
-     "parcel": {
-       "length": "15",
-       "width": "9",
-       "height": "3",
-       "distance_unit": "in",
-       "weight": "2",
-       "mass_unit": "lb"
-     }
-
-   },
-   {
-     "address": {
-       "zip": "85001",
-       "country": "US"
-     },
-     "parcel": {
-       "length": "35",
-       "width": "15",
-       "height": "25",
-       "distance_unit": "in",
-       "weight": "2",
-       "mass_unit": "lb"
-     }
-   }
- ],
-
- "addressTo":
- {
-   "zip": "10465",
-   "country": "US"
- }
-};
-
-    let url ='https://1ajvzgfkt6.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
-    // let url='https://jld0cpfhvi.execute-api.us-east-1.amazonaws.com/default/shipppp-dev-hello';
-      await fetch(url, {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify(data), // data can be `string` or {object}!
-        mode:'cors',
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res=>{
-        if (!res.ok) {
-          throw Error(res.statusText);
-        }
-        return res.json()
-      })      .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
-  }
-
-      
-
-
   render() {
     return (
       <ProductContext.Provider 
         value={
           {
+
             logged: this.state.logged_in,
             handleLogin:this.handleLogin, 
             handleLogout: this.handleLogout,
@@ -629,10 +591,11 @@ class ProductProvider extends React.Component {
             expireHandler: this.expireHandler,
             cancelFromCart:this.cancelFromCart,
             updateFromSearch: this.updateFromSearch,
-            calculateShipRate: this.calculateShipRate,
             shippingCost: this.shippingCost,
             handleSubmitAddress: this.handleSubmitAddress,
-            goPayment:this.state.goPayment
+            goPayment:this.state.goPayment,
+            upDateQuantityDemanded:this.upDateQuantityDemanded,
+            shipRateCost:this.state.shipRateCost
           }
         }
       >
