@@ -1,6 +1,4 @@
 # SnapChaChing 
-
-## About
 This project is an attemp to create an e-commerce platform in which reseller could se the mobile app to scan clothing and upload it to the platforn for sale.
 The website will display the item uploaded by the sellers using the android app.
 
@@ -11,11 +9,11 @@ We use mainly javascript for this project. Java is used for android. React frame
 Prof. Anna Wisniewska
 
 ## Author
-**Back-End:** Deion Bacchus, Francis Irizarry
-**Apache Solir Search Capability:** Usmaan Sahak
-**Security:** Francis Irizarry
-**Android:** Usmaan Sahak
-**Front-end:** Qiuqun Wang, Nelson Wong
+>**Back-End:** Deion Bacchus, Francis Irizarry
+>**Apache Solir Search Capability:** Usmaan Sahak
+>**Security:** Francis Irizarry
+>**Android:** Usmaan Sahak
+>**Front-end:** Qiuqun Wang, Nelson Wong
 
 ## Hosting
 Our Website is hosted at www.snapchaching.com.
