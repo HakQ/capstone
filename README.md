@@ -1,5 +1,5 @@
 # SnapChaChing 
-This project is an attemp to create an e-commerce platform in which reseller could se the mobile app to scan clothing and upload it to the platforn for sale.
+This project is an attempt to create an e-commerce platform in which reseller could se the mobile app to scan clothing and upload it to the platforn for sale.
 The website will display the item uploaded by the sellers using the android app. The app features payment through using the paypal sdk, shipping, tracking service through shippo api. 
 
 ## Use Case
@@ -14,7 +14,6 @@ Prof. Anna Wisniewska
 ## Author
 **Back-End:** Deion Bacchus, Francis Irizarry <br/>
 **Apache Solir Search Capability:** Usmaan Sahak <br/>
-**Security:** Francis Irizarry <br/>
 **Android:** Usmaan Sahak <br/>
 **Front-end:** Qiuqun Wang, Nelson Wong <br/>
 
