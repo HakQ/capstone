@@ -9,11 +9,11 @@ We use mainly javascript for this project. Java is used for android. React frame
 Prof. Anna Wisniewska
 
 ## Author
->**Back-End:** Deion Bacchus, Francis Irizarry
->**Apache Solir Search Capability:** Usmaan Sahak
->**Security:** Francis Irizarry
->**Android:** Usmaan Sahak
->**Front-end:** Qiuqun Wang, Nelson Wong
+**Back-End:** Deion Bacchus, Francis Irizarry &nbsp;
+**Apache Solir Search Capability:** Usmaan Sahak &nbsp;
+**Security:** Francis Irizarry &nbsp;
+**Android:** Usmaan Sahak &nbsp;
+**Front-end:** Qiuqun Wang, Nelson Wong &nbsp;
 
 ## Hosting
 Our Website is hosted at www.snapchaching.com.
