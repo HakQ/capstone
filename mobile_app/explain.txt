@@ -1,0 +1,108 @@
+The SnapChaching mobile app is primarily a sellers app. It is designed to fill the SnapChaching databases with products ready to be sold. It also allows prospective sellers to see the products that they currently have for sale, and to look at products that others have posted themselves. 
+
+With the app, one can search for products in our databases, post their own products, and check their accounts for relevant data in a neat and attractive layout.
+
+
+
+Major Files in Project:
+Account Adapter
+Inherits from ArrayAdapter, it helps render the account relevant information and views on the account panel in MarketActivity.
+
+ItemActivity
+Unfinished; when an item is clicked in MarketActivity, it leads to an ItemActivity which displays further information about the item in question.
+
+ItemModel
+Data structure which holds item information.
+
+LoginActivity
+Facilitates login. Appears if no one signed in during MarketActivity or if user signs out.
+
+MarketActivity
+The main activity of the project. The user is able to open the account panel, scan items, and look at their catalog of items on sale plus a marketplace of suggested items other people have posted.
+
+ResultActivity
+Activated when MarketActivity scans an item successfully. User is allowed to enter further information to facilitate the creation of a post. Once everything is filled out, the user may add a post to their catalog and the database.
+
+SearchActivity
+Activated when the search button is clicked on via the MarketActivity. It queries Apache Solr usig a k-gram tokenizing methodology to find relevant search results to the search terms entered above.
+
+SuggestAdapter
+Inherits from ArrayAdapter, it helps render the posts for the marketplace and catalog functionalities in MarketActivity.
+
+UserAcc
+Data structure which holds user account information.
+
+
+
+
+
+Most important non-trivial functions are explained below; Organized by Activity.
+
+LoginActivity 
+onCreate
+Log into userpool to get into Amazon Cognito. Use this to authenticate.
+If click on sign in, run sign in with handler. If click sign up, then reveal further fields and sign up with handler.
+Once signed in or joined, lead back to MarketActivity.
+
+
+
+MarketActivity
+onActivityResult
+If scan successful, then go to resultActivity with received upc.
+
+LookupThread
+Use the snapChaching backend to search the upcite database and return a json in appropriate format.
+
+LookupThreadBackup
+A backup function to LookupThread, if the snapChaching lambda microservice backend is down.
+
+suggest
+Wrapper function to suggest functionality for the marketplace 
+
+SolrThread
+Searches Solr to fill Catalog or Marketplace, depending on state.
+
+SolrPostsThread
+Searches Solr to fill catalog. Legacy.
+
+search
+Wrapper function for search.
+
+SolrSearchThread
+Searches Solr using term given. Fills a listview with the results.
+
+
+
+ResultActivity
+oncreate
+Check for what was passed on from the json scanned in the previous activity.
+For everything else, ask the user to enter it if required before proceeding to post it.
+
+postsThread
+Posts the json object prepared to our database by sending it to our lambda microservice backend.
+
+postsThreadBackup
+Backup function for debugging, if the backend point in postThread is down.
+
+
+
+SearchActivity
+onCreate
+Run search and update the listview every time the text in the search bar is changed.
+
+search
+Search wrapper function
+
+SolrSearchThread
+Search Solr using search term. Update the ListView displaying the search results.
+
+
+
+
+
+
+
+See: 
+AndroidUML.png
+snapChachingStack.png
+AndroidWireframes/
