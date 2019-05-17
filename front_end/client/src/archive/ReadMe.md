@@ -1,1 +1,0 @@
-This directory is not in use. It just collection of some files that may be deleted
