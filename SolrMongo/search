@@ -1,0 +1,1 @@
+curl "http://localhost:8983/solr/itemCore/select?q=name:$1"
