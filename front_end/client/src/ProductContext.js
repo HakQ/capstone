@@ -7,7 +7,7 @@ import {Auth} from "aws-amplify";
 
 const ProductContext = React.createContext();
 
-//create the provider class
+//create the provider class which manage the react state
 class ProductProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -20,17 +20,16 @@ class ProductProvider extends React.Component {
       hide_nav: false,
       promptConfirm:false,
       passReminder:"remember password need to be atleast 8 letters with atleast a number, lowercase, uppercase, and special symbol.",
-
       product:[],
       cartProduct:[],
       viewProduct:{},
-      // shippingCost:0,
       query:"*",
       goPayment:false,
       shipRateCost:""
     }
   }
 
+  //every section fetch update from the backend
   componentDidMount() {
     this.interval = setInterval(() => {
      this.updateFromSearch(this.state.query);
@@ -38,17 +37,18 @@ class ProductProvider extends React.Component {
 
   }
 
+  //deconstructor for react context
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
 
-  /********************User Info Methods**********************/
+  //function handleLogin(): Given a email(em) and (pw) allow the user to log on base on the credencials through cognito
   handleLogin = async (em, pw, cpw)=>{
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //the regex that the email should be
     let valid_mail = (em.match(mailformat)); //check if the provided email is in that form
 
-    //some test cases
+    //some test cases for signin before calling the backend api
     if(!valid_mail && false){
       this.setState({
         error_message:"Please try again. Invalid Email!",
@@ -86,7 +86,7 @@ class ProductProvider extends React.Component {
     }
     else{
       try {
-        await Auth.signIn(em, pw);//will throw error if unsuccessful login
+        await Auth.signIn(em, pw);//logging in thru cognito will throw error if unsuccessful login
 
         this.setState({
           logged_in: !this.state.logged_in,
@@ -94,7 +94,7 @@ class ProductProvider extends React.Component {
           password: pw,
           error_message:""
         });
-        /************trying retrieve cart**********/
+        //if successful login then fetch record of the items in cart of the user
         var data = {
           "operation": "RETRIEVE",
           "cart_id": em
@@ -102,8 +102,8 @@ class ProductProvider extends React.Component {
         let url='https://mhup9f5njl.execute-api.us-east-1.amazonaws.com/dev/shopping-cart-dev-cart';
 
         await fetch(url, {
-          method: 'POST', // or 'PUT'
-          body: JSON.stringify(data), // data can be `string` or {object}!
+          method: 'POST', 
+          body: JSON.stringify(data), 
           mode:'cors',
           headers:{
             'Content-Type': 'application/json'
@@ -116,11 +116,11 @@ class ProductProvider extends React.Component {
           return res.json()
         })
         .then((res)=> {
-          console.log("FRRRRROM THE SERVER: ", res);
           if("Im empty fill me up" != res){
             let currentCart = this.state.cartProduct;
             let userCart = res;
 
+            //decide what should be incart and what should be in the shop
             for( let i=0; i<currentCart.length; i++){
               for( let j=0; j<userCart.length; j++){
                   if(currentCart[i]._id == userCart[j]._id){
@@ -129,6 +129,7 @@ class ProductProvider extends React.Component {
                 }
             }
 
+            //returnProduct will be return to the shop
             let returnProduct = currentCart.concat(this.state.product);
 
             this.setState({
@@ -153,6 +154,7 @@ class ProductProvider extends React.Component {
     }
   }
 
+  //signout through cognito
   handleLogout =async ()=>{
     await Auth.signOut();
     console.log("debug: logged out");
@@ -163,6 +165,7 @@ class ProductProvider extends React.Component {
     })
   }
 
+  //signup thru cognito base on the data filled from the form
   handleSignup= async (info)=>{
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let valid_mail = (info.email.match(mailformat));
@@ -175,6 +178,7 @@ class ProductProvider extends React.Component {
 
 
 
+    //basic error check before calling backend
     if(!valid_mail){
       this.setState({
         error_message:"Please try again. Invalid Email!",
@@ -272,6 +276,7 @@ class ProductProvider extends React.Component {
     }
   }
 
+  //confirm the user sign up by testing out the code emailed to the user
   handleSignUpConfirm = async (confirmCode) =>{
       try{
         await Auth.confirmSignUp(this.state.email, confirmCode);
@@ -290,7 +295,7 @@ class ProductProvider extends React.Component {
   }
 
 
-  /*******************Product Info methods**********************/
+  //update the quantity demanded from the user given the id of the product and the quantity to update to
   upDateQuantityDemanded=(_id, changeQuantity)=>{
     const updateProduct = this.state.cartProduct.find(item=>item._id===_id);
     updateProduct.QuantityDemand = changeQuantity;
@@ -308,6 +313,7 @@ class ProductProvider extends React.Component {
   }
 
 
+  //set the view for the detail page base on which item that was click on, the id will be provided for this render
   setView=(_id)=>{
     const tempProduct = this.state.product.find(item=>item._id===_id);
     this.setState({
@@ -315,7 +321,7 @@ class ProductProvider extends React.Component {
     })
   }
 
-  /***************************addToCart()***************************************/  
+  //add an item to the cart
   addToCart= async (_id)=>{
     const addCartProduct = this.state.product.find(item=>item._id===_id);
     addCartProduct.QuantityDemand = 1;
@@ -367,7 +373,7 @@ class ProductProvider extends React.Component {
     })
   }
 
-  /***************************CancelFromCart()***************************************/
+  //cancel an item from the cart
   cancelFromCart= async(_id)=>{
     //find the item from cart that to be removed
     const removeCartProduct = this.state.cartProduct.find(item=>item._id===_id);
@@ -418,6 +424,7 @@ class ProductProvider extends React.Component {
     })
   }
 
+  //when an item expire, this will remove that item from the app
   expireHandler=(_id)=>{
     const newProducts = this.state.product.filter((item) =>{ 
       return item._id !== _id;  
@@ -434,6 +441,8 @@ class ProductProvider extends React.Component {
     })
   }
 
+
+  //fetch data from backend base on the query provided
   updateFromSearch= async (query)=>{
     
     let url = "http://ec2-3-86-76-11.compute-1.amazonaws.com:8983/solr/itemcore/select?q=Title:"+query;
@@ -477,11 +486,9 @@ class ProductProvider extends React.Component {
       })
       .catch(error => console.error('Error:', error));
 
-
-
-
   }
 
+  //submit the address to backend and receive a shipping cost back and send out labels
   handleSubmitAddress = async(address)=>{
 
     //var dataAddress = [{"email":"francis.irizarry52@myhunter.cuny.edu"}]
@@ -489,6 +496,7 @@ class ProductProvider extends React.Component {
 
     let myCart = this.state.cartProduct;
 
+    //find out all of the sellers email
     for(let i=0; i < myCart.length; i++){
       dataAddress.push({email:myCart[i].Seller_id});
     }
@@ -512,7 +520,6 @@ class ProductProvider extends React.Component {
       },
       Title:"Nike Hoodie"
     };
-
     fetch(url, {
       method: 'POST', 
       body: JSON.stringify(data),

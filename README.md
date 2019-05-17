@@ -1,6 +1,9 @@
 # SnapChaChing 
 This project is an attemp to create an e-commerce platform in which reseller could se the mobile app to scan clothing and upload it to the platforn for sale.
-The website will display the item uploaded by the sellers using the android app.
+The website will display the item uploaded by the sellers using the android app. The app features payment through using the paypal sdk, shipping, tracking service through shippo api. 
+
+## Use Case
+A typical use for the service is, seller upload a item through the android app. Buyer like the item and add the item to cart for purchase. The buyer proceed to checkout and a shipping rate is provided and later proceed to paypal. After confirm purchase, a shipping label will be send to seller and buyers will get a emailed confirmation
 
 ## Development
 We use mainly javascript for this project. Java is used for android. React framework is use for the front-end alongside with javascript, html, css. We use Node.js, mongodb, postgres, and apache solir for the backend. 
