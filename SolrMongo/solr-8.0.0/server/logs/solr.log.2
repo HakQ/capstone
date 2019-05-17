@@ -1,0 +1,85 @@
+2019-05-09 01:25:34.078 INFO  (main) [   ] o.e.j.u.log Logging initialized @1910ms to org.eclipse.jetty.util.log.Slf4jLog
+2019-05-09 01:25:34.421 WARN  (main) [   ] o.e.j.s.AbstractConnector Ignoring deprecated socket close linger time
+2019-05-09 01:25:34.432 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.14.v20181114; built: 2018-11-14T21:20:31.478Z; git: c4550056e785fb5665914545889f21dc136ad9e6; jvm 11.0.2+9-Ubuntu-3ubuntu118.04.3
+2019-05-09 01:25:34.472 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///home/ubuntu/solr-8.0.0/server/contexts/] at interval 0
+2019-05-09 01:25:35.072 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2019-05-09 01:25:35.084 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2019-05-09 01:25:35.085 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2019-05-09 01:25:35.087 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 660000ms
+2019-05-09 01:25:35.164 INFO  (main) [   ] o.a.s.u.c.SSLCredentialProviderFactory Processing SSL Credential Provider chain: env;sysprop
+2019-05-09 01:25:35.225 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2019-05-09 01:25:35.234 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.0.0
+2019-05-09 01:25:35.235 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2019-05-09 01:25:35.236 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /home/ubuntu/solr-8.0.0
+2019-05-09 01:25:35.236 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2019-05-09T01:25:35.236603Z
+2019-05-09 01:25:35.338 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: /home/ubuntu/solr-8.0.0/server/solr
+2019-05-09 01:25:35.347 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/ubuntu/solr-8.0.0/server/solr/solr.xml
+2019-05-09 01:25:35.450 INFO  (main) [   ] o.a.s.c.SolrXmlConfig MBean server found: com.sun.jmx.mbeanserver.JmxMBeanServer@6392827e, but no JMX reporters were configured - adding default JMX reporter.
+2019-05-09 01:25:36.204 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory Host whitelist initialized: WhitelistHostChecker [whitelistHosts=null, whitelistHostCheckingEnabled=true]
+2019-05-09 01:25:36.716 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for SslContextFactory@1869f114[provider=null,keyStore=null,trustStore=null]
+2019-05-09 01:25:36.967 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for SslContextFactory@746cd757[provider=null,keyStore=null,trustStore=null]
+2019-05-09 01:25:37.474 INFO  (main) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
+2019-05-09 01:25:37.486 INFO  (main) [   ] o.a.s.h.a.MetricsHistoryHandler No .system collection, keeping metrics history in memory.
+2019-05-09 01:25:37.682 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.node' (registry 'solr.node') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@6392827e
+2019-05-09 01:25:37.683 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jvm' (registry 'solr.jvm') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@6392827e
+2019-05-09 01:25:37.711 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jetty' (registry 'solr.jetty') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@6392827e
+2019-05-09 01:25:37.831 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /home/ubuntu/solr-8.0.0/server/solr
+2019-05-09 01:25:37.832 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Cores are: [itemcore]
+2019-05-09 01:25:38.070 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.c.SolrResourceLoader [itemcore] Added 59 libs to classloader, from paths: [/home/ubuntu/solr-8.0.0/contrib/clustering/lib, /home/ubuntu/solr-8.0.0/contrib/extraction/lib, /home/ubuntu/solr-8.0.0/contrib/langid/lib, /home/ubuntu/solr-8.0.0/contrib/velocity/lib, /home/ubuntu/solr-8.0.0/dist]
+2019-05-09 01:25:38.081 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@522a32b1{/solr,file:///home/ubuntu/solr-8.0.0/server/solr-webapp/webapp/,AVAILABLE}{/home/ubuntu/solr-8.0.0/server/solr-webapp/webapp}
+2019-05-09 01:25:38.133 INFO  (main) [   ] o.e.j.s.AbstractConnector Started ServerConnector@5bafc754{HTTP/1.1,[http/1.1, h2c]}{0.0.0.0:8983}
+2019-05-09 01:25:38.134 INFO  (main) [   ] o.e.j.s.Server Started @5968ms
+2019-05-09 01:25:38.600 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.c.SolrConfig Using Lucene MatchVersion: 8.0.0
+2019-05-09 01:25:38.956 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.s.IndexSchema [itemcore] Schema name=default-config
+2019-05-09 01:25:40.124 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2019-05-09 01:25:40.215 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.c.CoreContainer Creating SolrCore 'itemcore' using configuration from instancedir /home/ubuntu/solr-8.0.0/server/solr/itemcore, trusted=true
+2019-05-09 01:25:40.271 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.core.itemcore' (registry 'solr.core.itemcore') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@6392827e
+2019-05-09 01:25:40.302 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.c.SolrCore [[itemcore] ] Opening new SolrCore at [/home/ubuntu/solr-8.0.0/server/solr/itemcore], dataDir=[/home/ubuntu/solr-8.0.0/server/solr/itemcore/data/]
+2019-05-09 01:25:40.375 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2019-05-09 01:25:41.359 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2019-05-09 01:25:41.360 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2019-05-09 01:25:41.390 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2019-05-09 01:25:41.390 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2019-05-09 01:25:41.465 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.s.SolrIndexSearcher Opening [Searcher@71639820[itemcore] main]
+2019-05-09 01:25:41.486 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/ubuntu/solr-8.0.0/server/solr/itemcore/conf
+2019-05-09 01:25:41.531 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2019-05-09 01:25:41.544 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2019-05-09 01:25:41.578 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2019-05-09 01:25:41.585 INFO  (coreLoadExecutor-9-thread-1) [   x:itemcore] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1633015710702632960
+2019-05-09 01:25:41.595 INFO  (searcherExecutor-10-thread-1-processing-x:itemcore) [   x:itemcore] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@71639820[itemcore] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2019-05-09 01:25:41.595 INFO  (searcherExecutor-10-thread-1-processing-x:itemcore) [   x:itemcore] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2019-05-09 01:25:41.595 INFO  (searcherExecutor-10-thread-1-processing-x:itemcore) [   x:itemcore] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2019-05-09 01:25:41.614 INFO  (searcherExecutor-10-thread-1-processing-x:itemcore) [   x:itemcore] o.a.s.c.SolrCore [itemcore] Registered new searcher Searcher@71639820[itemcore] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2019-05-09 01:25:56.209 INFO  (qtp1277933280-17) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=64
+2019-05-09 01:26:02.179 INFO  (qtp1277933280-13) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=18
+2019-05-09 01:26:07.783 INFO  (qtp1277933280-20) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=0
+2019-05-09 01:27:28.113 INFO  (qtp1277933280-16) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=1
+2019-05-09 01:27:37.548 INFO  (qtp1277933280-21) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=0
+2019-05-09 01:28:16.054 INFO  (qtp1277933280-13) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=1
+2019-05-09 01:28:35.997 INFO  (qtp1277933280-16) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=1
+2019-05-09 01:28:42.687 INFO  (qtp1277933280-21) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=0
+2019-05-09 01:29:14.655 INFO  (qtp1277933280-15) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=7
+2019-05-09 01:31:13.150 INFO  (qtp1277933280-20) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=1
+2019-05-09 01:41:17.645 INFO  (qtp1277933280-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1557366077562} status=0 QTime=1
+2019-05-09 01:41:17.711 INFO  (qtp1277933280-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1557366077563} status=0 QTime=64
+2019-05-09 01:41:17.720 INFO  (qtp1277933280-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1557366077563} status=0 QTime=72
+2019-05-09 02:07:23.582 INFO  (qtp1277933280-18) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=0
+2019-05-09 16:45:33.391 INFO  (qtp1277933280-15) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={1=*:*} hits=0 status=0 QTime=8
+2019-05-09 16:45:37.016 INFO  (qtp1277933280-22) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=1
+2019-05-09 16:47:51.845 INFO  (qtp1277933280-16) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=2
+2019-05-09 16:48:04.534 INFO  (qtp1277933280-13) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=3
+2019-05-09 16:48:52.896 INFO  (qtp1277933280-20) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=1
+2019-05-09 16:48:59.820 INFO  (qtp1277933280-16) [   x:itemcore] o.a.s.c.S.Request [itemcore]  webapp=/solr path=/select params={q=*:*} hits=0 status=0 QTime=0
+2019-05-09 16:49:22.011 INFO  (ShutdownMonitor) [   ] o.e.j.s.AbstractConnector Stopped ServerConnector@5bafc754{HTTP/1.1,[http/1.1, h2c]}{0.0.0.0:8983}
+2019-05-09 16:49:22.011 INFO  (ShutdownMonitor) [   ] o.e.j.s.session node0 Stopped scavenging
+2019-05-09 16:49:22.022 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1902455960
+2019-05-09 16:49:22.031 INFO  (coreCloseExecutor-15-thread-1) [   x:itemcore] o.a.s.c.SolrCore [itemcore]  CLOSING SolrCore org.apache.solr.core.SolrCore@5f645f84
+2019-05-09 16:49:22.031 INFO  (coreCloseExecutor-15-thread-1) [   x:itemcore] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.itemcore, tag=5f645f84
+2019-05-09 16:49:22.032 INFO  (coreCloseExecutor-15-thread-1) [   x:itemcore] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@3767dc31: rootName = null, domain = solr.core.itemcore, service url = null, agent id = null] for registry solr.core.itemcore / com.codahale.metrics.MetricRegistry@43db2baa
+2019-05-09 16:49:22.139 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node, tag=null
+2019-05-09 16:49:22.141 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@396e6d9: rootName = null, domain = solr.node, service url = null, agent id = null] for registry solr.node / com.codahale.metrics.MetricRegistry@3462c2c2
+2019-05-09 16:49:22.148 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm, tag=null
+2019-05-09 16:49:22.149 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@15f8701f: rootName = null, domain = solr.jvm, service url = null, agent id = null] for registry solr.jvm / com.codahale.metrics.MetricRegistry@3c4ee181
+2019-05-09 16:49:22.155 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty, tag=null
+2019-05-09 16:49:22.158 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@514cd540: rootName = null, domain = solr.jetty, service url = null, agent id = null] for registry solr.jetty / com.codahale.metrics.MetricRegistry@2f9116c4
+2019-05-09 16:49:22.179 INFO  (ShutdownMonitor) [   ] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@522a32b1{/solr,null,UNAVAILABLE}{/home/ubuntu/solr-8.0.0/server/solr-webapp/webapp}

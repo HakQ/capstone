@@ -1,0 +1,59 @@
+2019-05-09 01:23:55,834 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:23:55,834 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:23:55,835 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:23:55,835 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:23:55,835 [WARNING] mongo_connector.connector:170 - MongoConnector: Can't find /home/ubuntu/solr-8.0.0/oplog.timestamp, attempting to create an empty progress log
+2019-05-09 01:23:55,843 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:23:55,843 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:23:55,844 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:26:02,268 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:26:02,268 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:26:02,269 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:26:02,269 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:26:02,280 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:26:02,280 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:26:02,280 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:27:28,178 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:27:28,178 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:27:28,179 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:27:28,179 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:27:28,191 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:27:28,191 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:27:28,192 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:28:16,087 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:28:16,088 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:28:16,088 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:28:16,088 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:28:16,099 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:28:16,099 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:28:16,100 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:28:36,035 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:28:36,036 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:28:36,036 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:28:36,036 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:28:36,048 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:28:36,048 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:28:36,049 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:29:14,686 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:29:14,687 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:29:14,687 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:29:14,688 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:29:14,698 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:29:14,698 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:29:14,698 [INFO] mongo_connector.connector:283 - MongoConnector: Empty oplog progress file.
+2019-05-09 01:29:14,699 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2019-05-09 01:31:13,173 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2019-05-09 01:31:13,173 [ALWAYS] mongo_connector.connector:50 - Python version: 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0]
+2019-05-09 01:31:13,174 [ALWAYS] mongo_connector.connector:50 - Platform: Linux-4.15.0-1032-aws-x86_64-with-Ubuntu-18.04-bionic
+2019-05-09 01:31:13,174 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.8.0
+2019-05-09 01:31:13,177 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 3.6.3
+2019-05-09 01:31:13,177 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.solr_doc_manager version: 0.1.0
+2019-05-09 01:31:13,177 [INFO] mongo_connector.connector:283 - MongoConnector: Empty oplog progress file.
+2019-05-09 01:31:13,178 [ERROR] mongo_connector.connector:383 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
