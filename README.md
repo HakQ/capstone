@@ -13,7 +13,7 @@ Prof. Anna Wisniewska
 
 ## Author
 **Back-End:** Deion Bacchus, Francis Irizarry <br/>
-**Apache Solir Search Capability:** Usmaan Sahak <br/>
+**Apache Solr and Mongodb config, admin and Sync:** Usmaan Sahak <br/>
 **Android:** Usmaan Sahak <br/>
 **Front-end:** Qiuqun Wang, Nelson Wong <br/>
 
